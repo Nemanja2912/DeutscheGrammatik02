@@ -39,7 +39,7 @@ const DragElement = ({
         });
       }, 1000);
     }
-  }, [moveToDrop]);
+  }, [moveToDrop, dispatchMove, dropRef]);
 
   useEffect(() => {
     if (returnState) {
