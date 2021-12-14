@@ -4,11 +4,20 @@ import DragElement from "./../UI/DragElement";
 
 const words = ["Modalverben", "Perfekt", "Trennbare Verben"];
 
-const SecondPartBox = ({ secondPart }) => {
+const SecondPartBox = ({
+  secondPart,
+  level,
+  setLevel,
+  moveFinger,
+  setHelpMove,
+  helpMove,
+}) => {
   const lineRefs = [useRef(null), useRef(null), useRef(null)];
 
   const [hide, setHide] = useState([0, 0, 0]);
   const [isDone, setIsDone] = useState([false, false, false]);
+  const [stateCollection, setStateCollection] = useState([]);
+  const [startMove, setStartMove] = useState([false, false, false]);
 
   const [ende, setEnde] = useState(false);
 
@@ -35,6 +44,17 @@ const SecondPartBox = ({ secondPart }) => {
         }, 1500);
       }
     }
+
+    for (let i = 0; i < isDone.length; i++) {
+      if (!isDone[i]) {
+        console.log(isDone);
+        console.log(i);
+        let level = i === 1 ? 9 : i === 2 ? 10 : 11;
+
+        setLevel(level);
+        break;
+      }
+    }
   }, [isDone, hide]);
 
   useEffect(() => {
@@ -49,6 +69,50 @@ const SecondPartBox = ({ secondPart }) => {
 
     setEnde(isEnd);
   }, [hide]);
+
+  useEffect(() => {
+    if (level < 9) return;
+
+    let index = level === 9 ? 1 : level === 10 ? 2 : 0;
+
+    if (!helpMove) return;
+    moveFinger([
+      stateCollection[index].absoluteX + 50,
+      stateCollection[index].absoluteY + 15,
+    ]);
+
+    setTimeout(() => {
+      moveFinger([
+        lineRefs[index].current.getBoundingClientRect().left + 50,
+        lineRefs[index].current.getBoundingClientRect().top + 15,
+      ]);
+
+      setStartMove((prev) => {
+        let list = [...prev];
+        list[index] = true;
+
+        return list;
+      });
+
+      setTimeout(() => {
+        // setIndicator((prev) => {
+        //   return { ...prev, active: true, wrong: false };
+        // });
+      }, 1500);
+
+      setTimeout(() => {
+        moveFinger("init");
+
+        setTimeout(() => {
+          setHelpMove(false);
+
+          if (level === 11) setEnde(true);
+        }, 500);
+
+        moveFinger(false);
+      }, 1500);
+    }, 1200);
+  }, [helpMove]);
 
   return (
     <div
@@ -96,8 +160,16 @@ const SecondPartBox = ({ secondPart }) => {
               <DragElement
                 key={word}
                 dropRef={lineRefs[index]}
+                moveToDrop={startMove[index]}
                 customClass={"green"}
                 returnState={(state) => {
+                  setStateCollection((prev) => {
+                    let list = [...prev];
+                    list[index] = state;
+
+                    return list;
+                  });
+
                   if (isDone[index] === state.isDone) return;
 
                   setIsDone((prev) => {
@@ -113,7 +185,7 @@ const SecondPartBox = ({ secondPart }) => {
             ))}
           </div>
         );
-      }, [isDone])}
+      }, [isDone, startMove])}
     </div>
   );
 };

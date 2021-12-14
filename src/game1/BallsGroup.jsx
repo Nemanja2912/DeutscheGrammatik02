@@ -195,7 +195,6 @@ const BallsGroup = ({
       }, 1500);
 
       setTimeout(() => {
-        moveFinger("init");
         let showList = [];
         for (let i in list) {
           setTransition(i, transitionDuration);
@@ -210,12 +209,14 @@ const BallsGroup = ({
 
         setTimeout(() => {
           returnDone({ line: false }, index + 1);
-          setHelpMove(false);
-        }, 500);
+          moveFinger("init");
 
-        setTimeout(() => {
-          moveFinger(false);
-        }, 0);
+          setHelpMove(false);
+
+          setTimeout(() => {
+            moveFinger(false);
+          }, 0);
+        }, 500);
       }, 1500);
     }, 1200);
   }, [helpMove]);
@@ -246,6 +247,7 @@ const BallsGroup = ({
 
         setTimeout(() => {
           returnDone({ line: false }, index + 1);
+          setLevel((prev) => prev + 1);
         }, 500);
       }, 5600);
     } else if (isDone.complete && !isDone.withDelay) {
@@ -273,6 +275,7 @@ const BallsGroup = ({
 
         setTimeout(() => {
           returnDone({ line: false }, index + 1);
+          setLevel((prev) => prev + 1);
         }, 500);
       }, transitionDuration);
     }

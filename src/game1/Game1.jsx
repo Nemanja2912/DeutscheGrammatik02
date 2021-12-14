@@ -184,17 +184,9 @@ const Game1 = () => {
     }
   }, [helpOverlay]);
 
-  // useEffect(() => {
-  //   let index;
-  //   for (let i = 0; i < opacityList.length; i++) {
-  //     if (!opacityList[i].word) {
-  //       index = i;
-  //       break;
-  //     }
-  //   }
-
-  //   setLevel(index);
-  // }, [opacityList]);
+  useEffect(() => {
+    console.log(helpOverlay, "pl");
+  }, []);
 
   return (
     <>
@@ -250,7 +242,14 @@ const Game1 = () => {
           </div>
         </div>
 
-        <SecondPartBox secondPart={secondPart} />
+        <SecondPartBox
+          secondPart={secondPart}
+          level={level}
+          setLevel={setLevel}
+          moveFinger={setHelpFingerPosition}
+          setHelpMove={setHelpMove}
+          helpMove={helpMove}
+        />
       </div>
     </>
   );

@@ -5,13 +5,17 @@ let initState = {
   y: 0,
   transition: 0,
   zIndex: 1,
+  isDone: false,
+  indicator: { active: false, wrong: false },
 };
 
 let ACTION_TYPE = {
   MOVE: "MOVE",
   TRANSITION: "TRANSITION",
+  IS_DONE: "IS_DONE",
   RESET: "RESET",
   CUSTOM: "CUSTOM",
+  INDICATOR: "INDICATOR",
 };
 
 let moveReduce = (state, action) => {
@@ -22,6 +26,11 @@ let moveReduce = (state, action) => {
         x: action.payload.x,
         y: action.payload.y,
         zIndex: 200,
+      };
+    case ACTION_TYPE.IS_DONE:
+      return {
+        ...state,
+        isDone: action.payload.isDone,
       };
     case ACTION_TYPE.TRANSITION:
       return {
@@ -36,6 +45,8 @@ let moveReduce = (state, action) => {
         transition: action.payload.transition,
         zIndex: 1,
       };
+    case ACTION_TYPE.INDICATOR:
+      return { ...state, indicator: action.payload.indicator };
     case ACTION_TYPE.CUSTOM:
       return { ...state, ...action.payload };
     default:
@@ -45,8 +56,6 @@ let moveReduce = (state, action) => {
 
 const useMove = (ref = false, transitionDuration = 200) => {
   const [moveState, dispatchMove] = useReducer(moveReduce, initState);
-  const [isDone, setIsDone] = useState(false);
-  const [indicator, setIndicator] = useState({ active: false, wrong: false });
 
   const setTransition = (transition) => {
     dispatchMove({
@@ -67,13 +76,20 @@ const useMove = (ref = false, transitionDuration = 200) => {
     });
   };
 
+  const setIndicator = (state) => {
+    dispatchMove({
+      type: ACTION_TYPE.INDICATOR,
+      payload: {
+        indicator: { ...moveState.indicator, ...state },
+      },
+    });
+  };
+
   const resetElement = (transition) => {
     setIndicator({ active: true, wrong: true });
 
     setTimeout(() => {
-      setIndicator((prev) => {
-        return { ...prev, active: false };
-      });
+      setIndicator({ active: false });
     }, 1000);
     dispatchMove({
       type: ACTION_TYPE.RESET,
@@ -84,7 +100,7 @@ const useMove = (ref = false, transitionDuration = 200) => {
   };
 
   const handleMove = (initEvent) => {
-    if (isDone) return;
+    if (moveState.isDone) return;
 
     setTransition(0);
 
@@ -126,12 +142,15 @@ const useMove = (ref = false, transitionDuration = 200) => {
         setIndicator({ active: true, wrong: false });
 
         setTimeout(() => {
-          setIndicator((prev) => {
-            return { ...prev, active: false };
-          });
+          setIndicator({ active: false });
         }, 1000);
 
-        setIsDone(true);
+        dispatchMove({
+          type: ACTION_TYPE.IS_DONE,
+          payload: {
+            isDone: true,
+          },
+        });
       } else {
         resetElement(transitionDuration);
 
@@ -146,11 +165,7 @@ const useMove = (ref = false, transitionDuration = 200) => {
     document.addEventListener("mouseup", mouseUp);
   };
 
-  return [
-    { ...moveState, isDone: isDone, indicator: indicator },
-    handleMove,
-    dispatchMove,
-  ];
+  return [{ ...moveState }, handleMove, dispatchMove];
 };
 
 export default useMove;

@@ -20,7 +20,6 @@ const HelpOverlay = ({ pos = false, closeOverlay }) => {
     transitionTimingFunction: "linear",
     zIndex: "1000000000000000001",
     width: "max-content",
-    // opacity: "0",
     pointerEvents: "none",
   };
 
