@@ -185,7 +185,12 @@ const Game2 = () => {
       }
     };
 
+    let preventMove = false;
+
     const activeMovement = (e) => {
+      if (preventMove) return;
+      preventMove = true;
+
       let el = e ? e.target : ball;
 
       ball.style.zIndex = "1000000";
@@ -242,10 +247,11 @@ const Game2 = () => {
           let ballList = Array.from(document.querySelectorAll(".ballClone"));
 
           let activeBallList = [...ballStatus];
-
-          for (let i = 0; i < ballStatus.length; i++) {
-            for (let j = 0; j < ballStatus[i].length; j++) {
-              activeBallList[i][j] = true;
+          if (contIndex === 1) {
+            for (let i = 0; i < ballStatus.length; i++) {
+              for (let j = 0; j < ballStatus[i].length; j++) {
+                activeBallList[i][j] = true;
+              }
             }
           }
 
@@ -261,13 +267,11 @@ const Game2 = () => {
 
             ballList[i].style.transition = "200ms";
 
-            console.log(ballList[0]);
-
             if (
               +ballList[i].getAttribute("containerindex") === contIndex ||
               activeContainer === 1
             ) {
-              ballList[i].style.left =
+              ballList[i].style.left = ballList[i].style.left =
                 ballRefs.current[containerIndex][
                   ballIndex
                 ].current.getBoundingClientRect().left + "px";
@@ -302,19 +306,34 @@ const Game2 = () => {
                 return list;
               });
               ballList[i].remove();
+
               setBallPosition();
-              setTimeout(() => {
-                console.log(contIndex);
-                setVerbCirclePosition(
-                  document.querySelectorAll(".ballClone").length - 2
-                );
-              }, 200);
             }, 200);
           }
 
+          setTimeout(() => {
+            preventMove = false;
+            setTimeout(() => {
+              setVerbCirclePosition(
+                document.querySelectorAll(".ballClone").length - 2
+              );
+
+              console.log(
+                Array.from(document.querySelectorAll(".ballClone")).length !== 0
+              );
+              setButtonShow(
+                contIndex !== 1 &&
+                  Array.from(document.querySelectorAll(".ballClone")).length !==
+                    0
+              );
+            }, 200);
+          }, 200);
           setBallStatus(activeBallList);
         } else {
-          setButtonShow(contIndex !== 1);
+          setButtonShow(
+            contIndex !== 1 &&
+              Array.from(document.querySelectorAll(".ballClone")).length !== 0
+          );
 
           let copyList = [...ballStatus];
           if (contIndex === 1) {
@@ -508,6 +527,7 @@ const Game2 = () => {
           setActiveContainer(nextContainerIndex);
           if (followingBall) followingBall.style.zIndex = "1000";
           ball.style.zIndex = "1000";
+          preventMove = false;
         }
       };
 
@@ -525,6 +545,45 @@ const Game2 = () => {
     }
 
     activeMovement();
+  };
+
+  const svgRef = useRef(null);
+
+  const handleSubmit = () => {
+    svgRef.current.style.opacity = 0;
+    const copySvg = svgRef.current.cloneNode(true);
+    copySvg.style.opacity = 1;
+    copySvg.style.transition = "1000ms";
+    copySvg.style.position = "absolute";
+    copySvg.style.left = svgRef.current.getBoundingClientRect().left + "px";
+    copySvg.style.top = svgRef.current.getBoundingClientRect().top + "px";
+    copySvg.style.transformOrigin = "left";
+
+    setTimeout(() => {
+      copySvg.style.left = 0 + "px";
+      copySvg.style.top = 300 + "px";
+      copySvg.style.transform = "scale(0.4)";
+    }, 0);
+
+    document.querySelector(".svg-copy").appendChild(copySvg);
+
+    let ballList = Array.from(document.querySelectorAll(".ballClone"));
+
+    for (let i = 0; i < ballList.length; i++) {
+      ballList[i].style.transition = "1000ms";
+      ballList[i].style.left =
+        0 +
+        (ballList[i].getBoundingClientRect().left -
+          dropZoneRef.current.getBoundingClientRect().left) *
+          0.4 +
+        "px";
+      ballList[i].style.top =
+        300 +
+        ballList[i].getBoundingClientRect().top -
+        dropZoneRef.current.getBoundingClientRect().top +
+        "px";
+      ballList[i].style.transform = "scale(0.4)";
+    }
   };
 
   return (
@@ -579,11 +638,13 @@ const Game2 = () => {
 
       <div id="clone-div"></div>
 
+      <div className="svg-copy"></div>
       <div className="drop-zone" ref={dropZoneRef}>
         <div className="cut1"></div>
         <div className="cut2"></div>
 
         <svg
+          ref={svgRef}
           width="685"
           height="130"
           viewBox="0 0 685 130"
@@ -608,7 +669,11 @@ const Game2 = () => {
           borderWidth: verbCircle.borderWidth,
         }}
       ></div>
-      {buttonShow && <p className="button">Weiter</p>}
+      {buttonShow && (
+        <p className="button" onClick={handleSubmit}>
+          Weiter
+        </p>
+      )}
     </div>
   );
 };
