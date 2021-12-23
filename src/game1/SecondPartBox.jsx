@@ -47,8 +47,6 @@ const SecondPartBox = ({
 
     for (let i = 0; i < isDone.length; i++) {
       if (!isDone[i]) {
-        console.log(isDone);
-        console.log(i);
         let level = i === 1 ? 9 : i === 2 ? 10 : 11;
 
         setLevel(level);

@@ -54,7 +54,11 @@ let moveReduce = (state, action) => {
   }
 };
 
-const useMove = (ref = false, transitionDuration = 200) => {
+const useMove = (
+  ref = false,
+  customDropPosition = false,
+  transitionDuration = 200
+) => {
   const [moveState, dispatchMove] = useReducer(moveReduce, initState);
 
   const setTransition = (transition) => {
@@ -125,9 +129,14 @@ const useMove = (ref = false, transitionDuration = 200) => {
         eventEnd.clientY > ref.current.getBoundingClientRect().top &&
         eventEnd.clientY < ref.current.getBoundingClientRect().bottom
       ) {
-        let x =
-          ref.current.getBoundingClientRect().left - leftPos + moveState.x;
-        let y = ref.current.getBoundingClientRect().top - topPos + moveState.y;
+        let x, y;
+        if (customDropPosition) {
+          x = customDropPosition[0] - leftPos + moveState.x;
+          y = customDropPosition[1] - topPos + moveState.y;
+        } else {
+          x = ref.current.getBoundingClientRect().left - leftPos + moveState.x;
+          y = ref.current.getBoundingClientRect().top - topPos + moveState.y;
+        }
 
         setTransition(transitionDuration);
         moveElement(x, y);

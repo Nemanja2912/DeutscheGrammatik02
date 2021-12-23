@@ -8,8 +8,13 @@ const DragElement = ({
   customClass,
   children,
   moveToDrop = false,
+  move = true,
+  customDropPosition = false,
 }) => {
-  const [elementState, handleMove, dispatchMove] = useMove(dropRef);
+  const [elementState, handleMove, dispatchMove] = useMove(
+    dropRef,
+    customDropPosition
+  );
   const [indicator, setIndicator] = useState({ active: false, wrong: false });
 
   useEffect(() => {
@@ -52,7 +57,7 @@ const DragElement = ({
   }, [elementState, returnState]);
 
   useEffect(() => {
-    setIndicator(elementState.indicator);
+    if (move) setIndicator(elementState.indicator);
   }, [elementState.indicator]);
 
   const elementRef = useRef();
@@ -64,8 +69,8 @@ const DragElement = ({
         ref={elementRef}
         className={`dragElement ${elementState.isDone && customClass}`}
         style={{
-          left: elementState.x,
-          top: elementState.y,
+          left: move ? elementState.x : 0,
+          top: move ? elementState.y : 0,
           transitionDuration: `${elementState.transition}ms`,
           zIndex: elementState.zIndex,
           position: "relative",

@@ -1,12 +1,13 @@
-import React, { useEffect, createRef } from "react";
+import React, { useEffect, createRef, useState, useRef } from "react";
 import "./css/general.css";
-// import Menu from "./menu/menu";
+import Menu from "./menu/menu";
 import Game1 from "./game1/Game1";
+import Game2 from "./game2/Game2";
 
 function App() {
-  // const [navMenuItem, setNavMenuItem] = useState(0);
-  // const [load, setLoad] = useState(false);
-  // const menuRef = useRef(null);
+  const [navMenuItem, setNavMenuItem] = useState(0);
+  const [load, setLoad] = useState(false);
+  const menuRef = useRef(null);
 
   const navButtonRef = [];
 
@@ -15,7 +16,7 @@ function App() {
   }
 
   setTimeout(() => {
-    // setLoad(true);
+    setLoad(true);
   }, 1000);
 
   useEffect(() => {
@@ -28,16 +29,17 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Menu
+      <Menu
         navMenuItem={navMenuItem}
         setNavMenuItem={setNavMenuItem}
         navButtonRef={navButtonRef}
         menuRef={menuRef}
-      /> */}
+      />
 
-      {/* {navMenuItem === 0 && <Game1 />} */}
+      {navMenuItem === 0 && <Game1 />}
+      {navMenuItem === 1 && <Game2 />}
 
-      <Game1 />
+      {/* <Game2 /> */}
     </div>
   );
 }

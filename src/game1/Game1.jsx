@@ -184,10 +184,6 @@ const Game1 = () => {
     }
   }, [helpOverlay]);
 
-  useEffect(() => {
-    console.log(helpOverlay, "pl");
-  }, []);
-
   return (
     <>
       <StatusBar
