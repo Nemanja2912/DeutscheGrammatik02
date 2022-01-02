@@ -22,6 +22,8 @@ const SecondPartBox = ({
   const [ende, setEnde] = useState(false);
 
   useEffect(() => {
+    if (level < 9) return;
+
     const setHideStatus = (index, status) => {
       setHide((prev) => {
         let arr = [...prev];
@@ -103,8 +105,6 @@ const SecondPartBox = ({
 
         setTimeout(() => {
           setHelpMove(false);
-
-          if (level === 11) setEnde(true);
         }, 500);
 
         moveFinger(false);

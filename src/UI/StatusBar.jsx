@@ -12,10 +12,10 @@ const StatusBar = ({
 }) => {
   let barStyle = {
     position: "absolute",
-    right: 50,
+    right: 25,
     top: 80,
     display: "flex",
-    gap: 15,
+    gap: 5,
   };
 
   const [showInfo, setShowInfo] = useState(false);

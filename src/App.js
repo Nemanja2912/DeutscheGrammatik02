@@ -1,13 +1,13 @@
-import React, { useEffect, createRef } from "react";
+import React, { useEffect, createRef, useRef, useState } from "react";
 import "./css/general.css";
-// import Menu from "./menu/menu";
+import Menu from "./menu/menu";
 import Game1 from "./game1/Game1";
 import Game2 from "./game2/Game2";
 
 function App() {
-  // const [navMenuItem, setNavMenuItem] = useState(0);
-  // const [load, setLoad] = useState(false);
-  // const menuRef = useRef(null);
+  const [navMenuItem, setNavMenuItem] = useState(0);
+  const [load, setLoad] = useState(false);
+  const menuRef = useRef(null);
 
   const navButtonRef = [];
 
@@ -16,13 +16,13 @@ function App() {
   }
 
   setTimeout(() => {
-    // setLoad(true);
+    setLoad(true);
   }, 1000);
 
   useEffect(() => {
     document
       .querySelector('meta[name="viewport"]')
-      .setAttribute("content", "width=1000", "initial-scale=1");
+      .setAttribute("content", "width=1200", "initial-scale=1");
 
     document.firstElementChild.style.zoom = 1;
   }, []);
@@ -37,8 +37,7 @@ function App() {
       /> */}
 
       {/* {navMenuItem === 0 && <Game1 />} */}
-
-      <Game2 />
+      {/* {navMenuItem === 1 && <Game2 />} */}
     </div>
   );
 }

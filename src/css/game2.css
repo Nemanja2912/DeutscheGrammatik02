@@ -26,34 +26,19 @@
   border: solid #eb6400;
   z-index: -2;
   border-radius: 50%;
-  transition: 0.2s;
+  transition-property: width, height, top, left, border-width;
+  transition-timing-function: linear;
   box-sizing: border-box;
 }
 
-.game2 .cut1 {
-  content: "";
-  box-sizing: content-box;
+.game2 .verb-half-circle .cut {
   position: absolute;
+  border: solid white;
   background-color: white;
-  width: 100%;
-  height: 1000px;
-  bottom: 78px;
-  right: 25%;
-  transform: rotate(15deg);
-  z-index: -1;
-}
-
-.game2 .cut2 {
-  content: "";
-  box-sizing: content-box;
-  position: absolute;
-  background-color: white;
-  width: 100%;
-  height: 1000px;
-  bottom: 90px;
-  left: 35%;
-  transform: rotate(-15deg);
-  z-index: -1;
+  transition-property: width, height, top, left, border-width;
+  transition-timing-function: linear;
+  transform: rotate(-5deg);
+  z-index: 10000000;
 }
 
 .game2 .button {
