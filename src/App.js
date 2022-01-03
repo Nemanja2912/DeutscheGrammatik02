@@ -3,6 +3,7 @@ import "./css/general.css";
 import Menu from "./menu/menu";
 import Game1 from "./game1/Game1";
 import Game2 from "./game2/Game2";
+import Game3 from "./game3/Game3";
 
 function App() {
   const [navMenuItem, setNavMenuItem] = useState(0);
@@ -29,15 +30,16 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Menu
+      <Menu
         navMenuItem={navMenuItem}
         setNavMenuItem={setNavMenuItem}
         navButtonRef={navButtonRef}
         menuRef={menuRef}
-      /> */}
+      />
 
-      {/* {navMenuItem === 0 && <Game1 />} */}
-      {/* {navMenuItem === 1 && <Game2 />} */}
+      {navMenuItem === 0 && <Game1 />}
+      {navMenuItem === 1 && <Game2 />}
+      {navMenuItem === 2 && <Game3 />}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const Ball = ({ children, color = "#a0c813" }) => {
+const Ball = ({ children, color = "#a0c813", ballRef }) => {
   const ballStyle = {
     margin: "0",
     position: "relative",
@@ -15,11 +15,10 @@ const Ball = ({ children, color = "#a0c813" }) => {
     textAlign: "center",
     transitionTimingFunction: "linear",
     padding: 5,
-    // transform: "scale(0)",
   };
 
   return (
-    <div className="ball" style={ballStyle}>
+    <div className="ball" ref={ballRef} style={ballStyle}>
       {children}
     </div>
   );
