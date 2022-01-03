@@ -1,0 +1,38 @@
+.game4 {
+  margin-top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game4 .text {
+  font-size: 24px;
+  line-height: 40px;
+  width: 900px;
+}
+
+.game4 .text div {
+  display: inline;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 1s;
+  border-radius: 5px;
+}
+
+.game4 .text div:hover {
+  background-color: #c7c7c7;
+}
+
+.game4 .clone {
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.game4 .drop {
+  margin-top: 50px;
+  background-color: #5ac8f5;
+  width: 900px;
+  height: 300px;
+  border-radius: 15px;
+}
+/*# sourceMappingURL=game4.css.map */
