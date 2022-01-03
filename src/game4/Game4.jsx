@@ -3,21 +3,9 @@ import "../css/game4.css";
 const Game4 = () => {
   const handleMoveSentence = (initEvent) => {
     const element = document.querySelector(".sentence1");
-    const cloneElement = element.cloneNode(true);
-    cloneElement.style.position = "absolute";
-    console.log(initEvent.clientY, element.offsetTop);
-    cloneElement.style.left =
-      initEvent.clientX - (initEvent.clientX - element.offsetLeft) + "px";
-    cloneElement.style.top =
-      initEvent.clientY - (initEvent.clientY - element.offsetTop) + "px";
-
-    element.style.opacity = 0;
-
-    document.querySelector(".clone").appendChild(cloneElement);
-
     const moveElement = (moveEvent) => {
-      cloneElement.style.left = moveEvent.clientX + "px";
-      cloneElement.style.top = moveEvent.clientY + "px";
+      element.style.left = moveEvent.clientX - initEvent.clientX + "px";
+      element.style.top = moveEvent.clientY - initEvent.clientY + "px";
     };
 
     document.addEventListener("mousemove", moveElement);
@@ -40,7 +28,6 @@ const Game4 = () => {
         <div>Nein, da hat nur der Wecker vom Handy geklingelt. </div>
         <div>Ich habe wieder geträumt.</div>
       </div>
-      <div className="clone"></div>
       <div className="drop"></div>
     </div>
   );
