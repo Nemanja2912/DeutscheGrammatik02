@@ -125,17 +125,15 @@
     z-index: 1;
   }
 
-  .verb-half-circle {
-    position: absolute;
+  .rectangle {
+    margin-top: 25px;
+    position: relative;
     border: 30px solid #eb6400;
-    z-index: -1;
-    border-radius: 50%;
+    border-top: 0px;
     transition-property: width, height, top, left, border-width;
     transition-timing-function: linear;
     box-sizing: border-box;
-    top: 100px;
     transform-origin: left;
-    height: 150px;
-    width: 150px;
+    height: 100px;
   }
 }

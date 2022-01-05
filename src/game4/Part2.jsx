@@ -1,31 +1,28 @@
 import React, { useState } from "react";
 
 const Part2 = () => {
-  const [verbCircle, setVerbCircle] = useState({
+  const [verbElement, setVerbElement] = useState({
     left: 50,
-    scale: 1,
+    width: 200,
   });
 
-  const handleCircleMove = () => {
-    let scale = 1;
+  const handleCircleMove = (initElement) => {
     let prevPos = 0;
-    const scaleCircle = (scaleEvent) => {
-      if (scaleEvent.clientX >= prevPos && scale <= 3) {
-        scale += 0.01;
-      } else if (scaleEvent.clientX < prevPos && scale > 1) {
-        scale -= 0.01;
-      }
 
-      prevPos = scaleEvent.clientX;
+    let initWidth = verbElement.width;
+    let width;
 
-      console.log(verbCircle.scale);
+    const moveElemenet = (moveEvent) => {
+      width = initWidth + moveEvent.clientX - initElement.clientX;
 
-      setVerbCircle((prev) => {
-        return { ...prev, scale: scale };
+      console.log(initWidth + moveEvent.clientX - initElement.clientX);
+
+      setVerbElement((prev) => {
+        return { ...prev, width: width };
       });
     };
 
-    document.addEventListener("mousemove", scaleCircle);
+    document.addEventListener("mousemove", moveElemenet);
   };
 
   return (
@@ -38,12 +35,11 @@ const Part2 = () => {
         <span>Spiele </span>
         <span>gewonnen.</span>
       </div>
-      <div className="cut"></div>
       <div
-        className="verb-half-circle"
+        className="rectangle"
         style={{
-          left: verbCircle.left,
-          transform: `scale(${verbCircle.scale})`,
+          left: verbElement.left,
+          width: verbElement.width,
         }}
         onMouseDown={handleCircleMove}
       ></div>
