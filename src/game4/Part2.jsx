@@ -8,6 +8,8 @@ const Part2 = () => {
   });
 
   const handleCircleMove = (initEvent) => {
+    let prevPos = 0;
+
     let sentence = document.querySelector(".sentence");
 
     let initWidth = 150;
@@ -19,8 +21,7 @@ const Part2 = () => {
     let widthBreakMin = 150;
 
     let initEventLeft = initEvent.clientX;
-
-    console.log(initEventLeft);
+    let initEventLeftWidth = initEvent.clientX;
 
     let right =
       initEvent.clientX >
@@ -42,19 +43,21 @@ const Part2 = () => {
       }
 
       if (right) {
-        width = initWidth + moveEvent.clientX - initEventLeft;
+        width = moveEvent.clientX - initEventLeftWidth + initWidth;
 
-        let additionalValue = width >= widthBreakMin ? widthBreakMax - 150 : 0;
+        left = moveEvent.clientX - initEventLeft + initLeft;
 
-        left =
-          moveEvent.clientX - initEvent.clientX + initLeft - additionalValue;
+        console.log(width, left);
 
         if (width < widthBreakMax && width >= widthBreakMin) {
+          console.log("v");
           setVerbElement((prev) => {
             return { ...prev, width };
           });
-        } else {
           initEventLeft = moveEvent.clientX;
+        } else {
+          // if(moveEvent.clientX)
+          initEventLeftWidth = moveEvent.clientX;
           initWidth = initEvent.target.getBoundingClientRect().width;
           setVerbElement((prev) => {
             return { ...prev, left };
