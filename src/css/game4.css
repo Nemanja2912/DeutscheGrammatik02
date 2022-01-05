@@ -105,7 +105,6 @@
 .part2 {
   margin-top: 25px;
   font-size: 24px;
-  text-align: center;
 }
 
 .part2 .cut {
@@ -118,20 +117,35 @@
   height: 170px;
 }
 
-.part2 .sentence {
+.part2 .wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.part2 .wrapper .sentence {
   position: relative;
   z-index: 1;
+  width: max-content;
+  transform-origin: right;
+}
+
+.part2 .wrapper .sentence span {
+  padding: 0 2px;
+  transition: 0.2s;
+  border-radius: 5px;
 }
 
 .part2 .rectangle {
-  margin-top: 25px;
+  border: 40px solid transparent;
+  border-top: 0;
   position: relative;
-  border: 30px solid #eb6400;
-  border-top: 0px;
-  transition-property: width, height, top, left, border-width;
-  transition-timing-function: linear;
+  cursor: pointer;
   box-sizing: border-box;
-  transform-origin: left;
-  height: 100px;
+  background-size: 100% 100%, 55% 100%, 55% 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(white, white), linear-gradient(-7deg, #eb6400 70%, #788287 0%), linear-gradient(7deg, #eb6400 70%, #788287 0%);
+  background-position: center center, right bottom, left bottom;
+  background-origin: content-box, border-box, border-box;
+  background-clip: content-box, border-box, border-box;
 }
 /*# sourceMappingURL=game4.css.map */

@@ -285,7 +285,7 @@ const Game4 = () => {
       Ziehe sie in das blaue Feld.
     </p>
   );
-  const [infoOverlay, setInfoOverlay] = useState(true);
+  const [infoOverlay, setInfoOverlay] = useState(false);
   const [helpOverlay, setHelpOverlay] = useState(false);
   const [helpFingerPosition, setHelpFingerPosition] = useState([]);
   const [feedback, setFeedback] = useState(false);
