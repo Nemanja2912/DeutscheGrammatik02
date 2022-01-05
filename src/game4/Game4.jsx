@@ -161,6 +161,8 @@ const Game4 = () => {
       document.removeEventListener("mousemove", moveElement);
       document.removeEventListener("mouseup", stopMove);
 
+      element.style.zIndex = "1";
+
       if (
         endEvent.clientX > dropRef.current.getBoundingClientRect().left &&
         endEvent.clientX < dropRef.current.getBoundingClientRect().right &&
@@ -225,22 +227,8 @@ const Game4 = () => {
           element.style.transition = "200ms margin-left";
           element.style.opacity = "0";
           element.style.marginLeft =
-            -element.getBoundingClientRect().width - 75 + "px";
-          setTimeout(() => {
-            element.style.marginLeft =
-              -element.getBoundingClientRect().width + 75 + "px";
-            setTimeout(() => {
-              element.style.marginLeft =
-                -element.getBoundingClientRect().width - 25 + "px";
-              setTimeout(() => {
-                element.style.marginLeft =
-                  -element.getBoundingClientRect().width + "px";
-                setTimeout(() => {
-                  element.remove();
-                }, 300);
-              }, 200);
-            }, 200);
-          }, 200);
+            -element.getBoundingClientRect().width + "px";
+          element.remove();
 
           switch (+element.getAttribute("sentenceid")) {
             case 1:
@@ -363,6 +351,7 @@ const Game4 = () => {
   };
 
   useEffect(() => {
+    if (!isDone) return;
     const answerListId = [1, 2, 4, 5, 7, 9, 10];
 
     if (helpOverlay) {
@@ -376,8 +365,6 @@ const Game4 = () => {
           break;
         }
       }
-
-      if (false) return;
 
       const element = sentenceList[answerListId[firstActiveId]];
 
@@ -491,7 +478,12 @@ const Game4 = () => {
           </>
         )}
       </div>
-      {!isDone && <Part2 />}
+      {!isDone && (
+        <Part2
+          setHelpFingerPosition={setHelpFingerPosition}
+          helpOverlay={helpOverlay}
+        />
+      )}
       <StatusBar
         infoText={infoText}
         infoOverlay={infoOverlay}

@@ -129,14 +129,16 @@
       transform-origin: right;
 
       span {
-        padding: 0 2px;
+        padding: 0 5px;
         transition: 0.2s;
         border-radius: 5px;
+        background-color: transparent;
       }
     }
   }
 
   .rectangle {
+    margin-top: 10px;
     border: 40px solid transparent;
     border-top: 0;
     position: relative;
