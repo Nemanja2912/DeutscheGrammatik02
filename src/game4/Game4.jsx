@@ -4,6 +4,7 @@ import "../css/game4.css";
 import StatusBar from "../UI/StatusBar";
 import FeedbackOverlay from "./FeedbackOverlay";
 import Part2 from "./Part2";
+import Part3 from "./Part3";
 
 let sentenceList = [
   [
@@ -24,6 +25,33 @@ let sentenceList = [
   ["Vielleicht ", "sind ", "es ", "meine ", "Fans."],
   ["Nein, ", "da ", "hat ", "nur ", "der Wecker ", "vom Handy ", "geklingelt."],
   ["Ich ", "habe ", "wieder ", "geträumt."],
+];
+
+let sentenceList2 = [
+  {
+    words: ["Ich ", "habe ", "schon ", "viele Spiele ", "gewonnen."],
+    verbID: 1,
+  },
+  { words: ["Jeden Tag ", "stehe ", "ich ", "früh ", "auf."], verbID: 1 },
+  { words: ["Dort ", "muss ", "ich ", "viel ", "üben."], verbID: 1 },
+  {
+    words: ["Später ", "möchte ", "ich ", "Fußball-Weltmeister ", "werden."],
+    verbID: 1,
+  },
+  { words: ["Oh, ", "jemand ", "ruft ", "mich ", "an."], verbID: 2 },
+  {
+    words: [
+      "Nein, ",
+      "da ",
+      "hat ",
+      "nur ",
+      "der Wecker ",
+      "vom Handy ",
+      "geklingelt.",
+    ],
+    verbID: 2,
+  },
+  { words: ["Ich ", "habe ", "wieder ", "geträumt."], verbID: 1 },
 ];
 
 const Game4 = () => {
@@ -273,7 +301,7 @@ const Game4 = () => {
       Ziehe sie in das blaue Feld.
     </p>
   );
-  const [infoOverlay, setInfoOverlay] = useState(false);
+  const [infoOverlay, setInfoOverlay] = useState(true);
   const [helpOverlay, setHelpOverlay] = useState(false);
   const [helpFingerPosition, setHelpFingerPosition] = useState([]);
   const [feedback, setFeedback] = useState(false);
@@ -281,7 +309,7 @@ const Game4 = () => {
   const [rightSentence, setRightSentence] = useState(0);
   const [wrongSentence, setWrongSentence] = useState(0);
 
-  const [isDone, setIsDone] = useState(false);
+  const [isDone, setIsDone] = useState(true);
 
   const handleCheck = () => {
     const numberSentStrings = [
@@ -349,6 +377,8 @@ const Game4 = () => {
 
     setFeedback(true);
   };
+
+  const [level, setLevel] = useState(0);
 
   useEffect(() => {
     if (!isDone) return;
@@ -450,6 +480,12 @@ const Game4 = () => {
     }
   }, [helpOverlay]);
 
+  useEffect(() => {
+    if (level === 7) {
+      setHelpFingerPosition("init");
+    }
+  }, [level]);
+
   return (
     <>
       <div className="game4">
@@ -478,12 +514,54 @@ const Game4 = () => {
           </>
         )}
       </div>
-      {!isDone && (
-        <Part2
-          setHelpFingerPosition={setHelpFingerPosition}
-          helpOverlay={helpOverlay}
-        />
-      )}
+      {!isDone &&
+        sentenceList2.map(
+          (sentence, index) =>
+            index === level && (
+              <Part2
+                setHelpFingerPosition={setHelpFingerPosition}
+                helpOverlay={helpOverlay}
+                setLevel={setLevel}
+                verbID={sentence.verbID}
+              >
+                {sentence.words.map((word, index) => (
+                  <span
+                    verb={
+                      index === sentence.verbID ||
+                      index === sentence.words.length - 1
+                        ? "true"
+                        : null
+                    }
+                  >
+                    {word}
+                  </span>
+                ))}
+              </Part2>
+            )
+        )}
+      {level === 7 &&
+        sentenceList2.map((sentence) => (
+          <Part3 verbID={sentence.verbID}>
+            {sentence.words.map((word, index) => (
+              <span
+                verb={
+                  index === sentence.verbID ||
+                  index === sentence.words.length - 1
+                    ? "true"
+                    : null
+                }
+                className={`${
+                  index === sentence.verbID ||
+                  index === sentence.words.length - 1
+                    ? "verb"
+                    : ""
+                }`}
+              >
+                {word}
+              </span>
+            ))}
+          </Part3>
+        ))}
       <StatusBar
         infoText={infoText}
         infoOverlay={infoOverlay}

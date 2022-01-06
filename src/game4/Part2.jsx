@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Indicator from "../UI/Indicator";
 
-const Part2 = ({ helpOverlay, setHelpFingerPosition }) => {
+const Part2 = ({
+  helpOverlay,
+  setHelpFingerPosition,
+  children,
+  setLevel,
+  verbID,
+}) => {
   const [indicator, setIndicator] = useState({
     active: false,
     wrong: false,
@@ -9,12 +15,21 @@ const Part2 = ({ helpOverlay, setHelpFingerPosition }) => {
   const [verbElement, setVerbElement] = useState({
     left: window.innerWidth - 200,
     width: 150,
-    borderWidth: 20,
   });
+  const [opacity, setOpacity] = useState(true);
+  const [preventMove, setPreventMove] = useState(false);
 
   const circleRef = useRef(null);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpacity(false);
+    }, 0);
+  }, []);
+
   const handleCircleMove = (initEvent) => {
+    if (preventMove) return;
+
     let prevPos = initEvent.clientX;
     let moveSide;
 
@@ -164,6 +179,15 @@ const Part2 = ({ helpOverlay, setHelpFingerPosition }) => {
         setIndicator({ active: true, wrong: true });
       } else {
         setIndicator({ active: true, wrong: false });
+
+        setPreventMove(true);
+
+        setTimeout(() => {
+          setOpacity(true);
+          setTimeout(() => {
+            setLevel((prev) => prev + 1);
+          }, 1000);
+        }, 1000);
       }
 
       setTimeout(() => {
@@ -175,31 +199,100 @@ const Part2 = ({ helpOverlay, setHelpFingerPosition }) => {
   };
 
   useEffect(() => {
-    if (helpOverlay) {
+    if (helpOverlay && !preventMove) {
+      setPreventMove(true);
+      let sentence = document.querySelector(".sentence");
+
       setHelpFingerPosition([
-        circleRef.current.getBoundingClientRect().left,
-        circleRef.current.getBoundingClientRect().top,
+        circleRef.current.getBoundingClientRect().left +
+          verbElement.width / 5 / 2 -
+          10,
+        circleRef.current.getBoundingClientRect().top + 10,
       ]);
 
       setTimeout(() => {
-        setHelpFingerPosition("init");
-        setHelpFingerPosition(false);
-      }, 2000);
+        for (let i = 0; i < sentence.children.length; i++) {
+          sentence.children[i].style.backgroundColor = "transparent";
+        }
+        setHelpFingerPosition([
+          sentence.children[verbID].getBoundingClientRect().left,
+          circleRef.current.getBoundingClientRect().top + 10,
+        ]);
+
+        circleRef.current.style.transition = "1000ms linear";
+
+        setVerbElement((prev) => {
+          return {
+            ...prev,
+            left: sentence.children[verbID].getBoundingClientRect().left,
+          };
+        });
+
+        setTimeout(() => {
+          sentence.children[verbID].style.backgroundColor = "#A0C814";
+        }, 1000);
+
+        setTimeout(() => {
+          setHelpFingerPosition([
+            circleRef.current.getBoundingClientRect().right -
+              verbElement.width / 5 / 2 -
+              10,
+            circleRef.current.getBoundingClientRect().top + 10,
+          ]);
+
+          setTimeout(() => {
+            setHelpFingerPosition([
+              sentence.children[
+                sentence.children.length - 1
+              ].getBoundingClientRect().right -
+                sentence.children[
+                  sentence.children.length - 1
+                ].getBoundingClientRect().width /
+                  2,
+              circleRef.current.getBoundingClientRect().top + 10,
+            ]);
+
+            setVerbElement((prev) => {
+              return {
+                ...prev,
+                width:
+                  sentence.children[
+                    sentence.children.length - 1
+                  ].getBoundingClientRect().right -
+                  sentence.children[verbID].getBoundingClientRect().left -
+                  15,
+              };
+            });
+
+            setTimeout(() => {
+              sentence.children[
+                sentence.children.length - 1
+              ].style.backgroundColor = "#A0C814";
+
+              setIndicator({ active: true, wrong: false });
+              setOpacity(true);
+              setHelpFingerPosition("init");
+              setHelpFingerPosition(false);
+
+              setTimeout(() => {
+                setLevel((prev) => prev + 1);
+                setIndicator({ active: false, wrong: false });
+              }, 1000);
+            }, 1000);
+          }, 1250);
+        }, 1250);
+      }, 1250);
     }
   }, [helpOverlay]);
 
   return (
     <>
-      <div className="part2">
+      <div
+        className="part2"
+        style={{ opacity: opacity ? 0 : 1, transition: "1000ms" }}
+      >
         <div className="wrapper">
-          <div className="sentence">
-            <span>Ich</span>
-            <span verb="true">have</span>
-            <span>schon</span>
-            <span>viele</span>
-            <span>Spiele</span>
-            <span verb="true">gewonnen.</span>
-          </div>
+          <div className="sentence">{children}</div>
         </div>
         <div
           className="rectangle"

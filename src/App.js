@@ -31,18 +31,17 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Menu
+      <Menu
         navMenuItem={navMenuItem}
         setNavMenuItem={setNavMenuItem}
         navButtonRef={navButtonRef}
         menuRef={menuRef}
-      /> */}
+      />
 
-      {/* {navMenuItem === 0 && <Game1 />}
+      {navMenuItem === 0 && <Game1 />}
       {navMenuItem === 1 && <Game2 />}
-      {navMenuItem === 2 && <Game3 />} */}
-
-      <Game4 />
+      {navMenuItem === 2 && <Game3 />}
+      {navMenuItem === 3 && <Game4 />}
     </div>
   );
 }
