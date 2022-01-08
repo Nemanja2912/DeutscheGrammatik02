@@ -1,25 +1,27 @@
 {
   "files": {
-    "main.css": "/DeutscheGrammatik02/static/css/main.af2f7a0c.chunk.css",
-    "main.js": "/DeutscheGrammatik02/static/js/main.6723cd5f.chunk.js",
-    "main.js.map": "/DeutscheGrammatik02/static/js/main.6723cd5f.chunk.js.map",
+    "main.css": "/DeutscheGrammatik02/static/css/main.3056e822.chunk.css",
+    "main.js": "/DeutscheGrammatik02/static/js/main.23600994.chunk.js",
+    "main.js.map": "/DeutscheGrammatik02/static/js/main.23600994.chunk.js.map",
     "runtime-main.js": "/DeutscheGrammatik02/static/js/runtime-main.7e4cb29b.js",
     "runtime-main.js.map": "/DeutscheGrammatik02/static/js/runtime-main.7e4cb29b.js.map",
-    "static/js/2.aa32d2f5.chunk.js": "/DeutscheGrammatik02/static/js/2.aa32d2f5.chunk.js",
-    "static/js/2.aa32d2f5.chunk.js.map": "/DeutscheGrammatik02/static/js/2.aa32d2f5.chunk.js.map",
+    "static/js/2.f84403ba.chunk.js": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js",
+    "static/js/2.f84403ba.chunk.js.map": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js.map",
     "index.html": "/DeutscheGrammatik02/index.html",
-    "static/css/main.af2f7a0c.chunk.css.map": "/DeutscheGrammatik02/static/css/main.af2f7a0c.chunk.css.map",
-    "static/js/2.aa32d2f5.chunk.js.LICENSE.txt": "/DeutscheGrammatik02/static/js/2.aa32d2f5.chunk.js.LICENSE.txt",
+    "static/css/main.3056e822.chunk.css.map": "/DeutscheGrammatik02/static/css/main.3056e822.chunk.css.map",
+    "static/js/2.f84403ba.chunk.js.LICENSE.txt": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js.LICENSE.txt",
     "static/media/general.css": "/DeutscheGrammatik02/static/media/GoetheGothicBold.612e7d20.ttf",
+    "static/media/arrow.6af90567.svg": "/DeutscheGrammatik02/static/media/arrow.6af90567.svg",
     "static/media/arrow_down.280089b6.svg": "/DeutscheGrammatik02/static/media/arrow_down.280089b6.svg",
     "static/media/asset1.efdcc200.svg": "/DeutscheGrammatik02/static/media/asset1.efdcc200.svg",
     "static/media/asset2.5fd47f2f.svg": "/DeutscheGrammatik02/static/media/asset2.5fd47f2f.svg",
+    "static/media/subtract.86d0e8f7.svg": "/DeutscheGrammatik02/static/media/subtract.86d0e8f7.svg",
     "static/media/wrong.e1e9b4ab.svg": "/DeutscheGrammatik02/static/media/wrong.e1e9b4ab.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7e4cb29b.js",
-    "static/js/2.aa32d2f5.chunk.js",
-    "static/css/main.af2f7a0c.chunk.css",
-    "static/js/main.6723cd5f.chunk.js"
+    "static/js/2.f84403ba.chunk.js",
+    "static/css/main.3056e822.chunk.css",
+    "static/js/main.23600994.chunk.js"
   ]
 }
