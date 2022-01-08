@@ -5,6 +5,7 @@ import Game1 from "./game1/Game1";
 import Game2 from "./game2/Game2";
 import Game3 from "./game3/Game3";
 import Game4 from "./game4/Game4";
+import Game5 from "./game5/Game5";
 
 function App() {
   const [navMenuItem, setNavMenuItem] = useState(0);
@@ -42,6 +43,7 @@ function App() {
       {navMenuItem === 1 && <Game2 />}
       {navMenuItem === 2 && <Game3 />}
       {navMenuItem === 3 && <Game4 />}
+      {navMenuItem === 4 && <Game5 />}
     </div>
   );
 }
