@@ -381,7 +381,14 @@ const Game4 = () => {
   const [level, setLevel] = useState(0);
 
   useEffect(() => {
-    if (!isDone) return;
+    if (!isDone || rightSentence === 7) {
+      setHelpFingerPosition("init");
+      setTimeout(() => {
+        setHelpFingerPosition(false);
+      }, 10);
+
+      return;
+    }
     const answerListId = [1, 2, 4, 5, 7, 9, 10];
 
     if (helpOverlay) {
