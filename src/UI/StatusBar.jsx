@@ -8,7 +8,9 @@ const StatusBar = ({
   infoOverlay,
   setInfoOverlay = () => {},
   setHelpOverlay = () => {},
+  preventHelp = false,
   helpFingerPosition,
+  titleEnd = false,
 }) => {
   let barStyle = {
     position: "absolute",
@@ -35,6 +37,9 @@ const StatusBar = ({
           detailsText={"Hilfe"}
           color={"#5ac8f5"}
           onClick={() => {
+            console.log(preventHelp, "preventHelp");
+            if (preventHelp) return;
+
             setHelpOverlay(true);
             setShowHelp(true);
           }}
@@ -48,6 +53,7 @@ const StatusBar = ({
             setInfoOverlay(false);
             setShowInfo(false);
           }}
+          titleEnd={titleEnd}
         >
           {infoText}
         </InfoOverlay>

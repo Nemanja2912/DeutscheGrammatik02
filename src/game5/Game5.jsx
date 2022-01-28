@@ -433,6 +433,8 @@ const Game5 = () => {
     }
   }, [helpOverlay]);
 
+  const [titleEnd, setTitleEnd] = useState(false);
+
   return (
     <>
       {!part2 && (
@@ -542,6 +544,9 @@ const Game5 = () => {
           <Part2Game5
             helpOverlay={helpOverlay}
             setHelpFingerPosition={setHelpFingerPosition}
+            setInfoOverlay={setInfoOverlay}
+            setInfoText={setInfoText}
+            setTitleEnd={setTitleEnd}
           />
         )}
       </div>
@@ -549,6 +554,7 @@ const Game5 = () => {
       <StatusBar
         infoText={infoText}
         infoOverlay={infoOverlay}
+        titleEnd={titleEnd}
         setInfoOverlay={setInfoOverlay}
         setHelpOverlay={setHelpOverlay}
         helpFingerPosition={helpFingerPosition}

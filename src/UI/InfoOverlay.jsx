@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { useState, useEffect } from "react";
 
-const InfoOverlay = ({ children, closeFunc }) => {
+const InfoOverlay = ({ children, closeFunc, titleEnd }) => {
   const infoOverlayStyle = {
     position: "absolute",
     left: 0,
@@ -128,7 +128,7 @@ const InfoOverlay = ({ children, closeFunc }) => {
         }}
       >
         <div className="title" style={titleStyle}>
-          Aufgabe
+          {titleEnd ? "ENDE" : "AUFGABE"}
         </div>
         <div className="text" style={textStyle}>
           {children}

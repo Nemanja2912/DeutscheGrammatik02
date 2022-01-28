@@ -21,7 +21,7 @@ for (let i = 0; i < wordList.length; i++) {
   }
 }
 
-const Game2 = () => {
+const Game2 = ({ nextLesson }) => {
   const [lineLevel, setLineLevel] = useState(0);
   const [ballLength, setballLength] = useState(0);
   const [ballActive, setBallActive] = useState(ballActiveList);
@@ -85,8 +85,6 @@ const Game2 = () => {
     }
 
     setballLength(ballList.length);
-
-    console.log(ballList.length);
   };
 
   //SetVerbCirclePosition
@@ -335,7 +333,6 @@ const Game2 = () => {
             let ballList = Array.from(document.querySelectorAll(".ballClone"));
 
             // if (ballList.length === ballLength) {
-            console.log("in");
             setVerbCirclePosition(ballList.length - 2);
             // }
 
@@ -1158,6 +1155,15 @@ const Game2 = () => {
     }
   }, [helpOverlay]);
 
+  const [infoOverlay, setInfoOverlay] = useState(true);
+  const [end, setEnd] = useState(false);
+
+  useEffect(() => {
+    if (lineLevel === 3) {
+      setEnd(true);
+    }
+  }, [lineLevel]);
+
   return (
     <>
       <StatusBar
@@ -1167,6 +1173,8 @@ const Game2 = () => {
             die Schale.
           </p>
         }
+        infoOverlay={infoOverlay}
+        setInfoOverlay={setInfoOverlay}
         helpFingerPosition={helpFingerPosition}
         setHelpOverlay={setHelpOverlay}
       />
@@ -1218,6 +1226,9 @@ const Game2 = () => {
                       >
                         <Ball
                           color={containerIndex === 1 ? "#3FA0C8" : "#8D9599"}
+                          secondColor={
+                            containerIndex === 1 ? "#378aad" : "#7b8285"
+                          }
                         >
                           {word}
                         </Ball>
@@ -1284,6 +1295,11 @@ const Game2 = () => {
           </p>
         )}
       </div>
+      {end && (
+        <div className="end-button game2-button" onClick={nextLesson}>
+          Weiter
+        </div>
+      )}
     </>
   );
 };

@@ -75,7 +75,7 @@ const Screen2 = ({ movePos, changePos, item, changeItem, navButtonRef }) => {
                 }}
                 ref={navButtonRef[1]}
               >
-                2. POSITION DES VERBS FINDEN
+                2. Satzklammer im Satz
               </div>
               <div
                 className={`title ${item === 2 ? "active" : ""} ${
@@ -99,7 +99,7 @@ const Screen2 = ({ movePos, changePos, item, changeItem, navButtonRef }) => {
                 }}
                 ref={navButtonRef[2]}
               >
-                3. REGEL FORMULIEREN
+                3. Regel formulieren
               </div>
               <div
                 className={`title ${item === 3 ? "active" : ""} ${
@@ -160,7 +160,7 @@ const Screen2 = ({ movePos, changePos, item, changeItem, navButtonRef }) => {
               {item === 0
                 ? "Was ist eine Satzklammer?"
                 : item === 1
-                ? "Welche Position hat das Verb? "
+                ? "Wo steht die Satzklammer im Satz? "
                 : item === 2
                 ? "Wie heisst die Regel?"
                 : "Was weißt du?"}
@@ -174,12 +174,12 @@ const Screen2 = ({ movePos, changePos, item, changeItem, navButtonRef }) => {
               {item === 0
                 ? "Hier lernst du drei Typen der Satzklammer kennen."
                 : item === 1
-                ? "In diesem Schritt ordnest du die Sätze."
+                ? "Hier kannst du Sätze bilden."
                 : item === 2
                 ? "Du hast viel mit Sätzen gearbeitet und kannst selbst eine Regel formulieren."
                 : item === 3
-                ? "In dieser Übung bildest du Sätze und siehst Bilder."
-                : "In dieser Übung bildest du Sätze."}
+                ? "In dieser Übung liest du eine Geschichte, findest Sätze mit der Satzklammer und markierst die Teile der Satzklammer. "
+                : "In dieser Übung arbeitest du mit Jetons und bildest Sätze."}
             </p>
           </>
         )}

@@ -44,7 +44,7 @@ let options = [
   },
 ];
 
-const Screen3 = ({ helpOverlay, setHelpFingerPosition }) => {
+const Screen3 = ({ helpOverlay, setHelpFingerPosition, setEnd }) => {
   const dropRefList = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const [startMove, setStartMove] = useState([]);
   const [finished, setFinished] = useState(false);
@@ -152,6 +152,7 @@ const Screen3 = ({ helpOverlay, setHelpFingerPosition }) => {
     }
 
     if (finished) {
+      setEnd(true);
       setHelpFingerPosition("init");
 
       setTimeout(() => {

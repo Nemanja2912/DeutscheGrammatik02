@@ -386,4 +386,30 @@
   opacity: 1;
   pointer-events: inherit;
 }
+
+.end-button {
+  font-size: 25px;
+  background-color: #fff;
+  color: #788287;
+  width: max-content;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 20px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  animation-name: buttonShow;
+  animation-duration: 1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  transition: 0.5s;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+}
+
+.end-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+}
 /*# sourceMappingURL=style.css.map */

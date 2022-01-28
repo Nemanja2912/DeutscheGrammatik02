@@ -11,6 +11,7 @@ const SecondPartBox = ({
   moveFinger,
   setHelpMove,
   helpMove,
+  returnEnd,
 }) => {
   const lineRefs = [useRef(null), useRef(null), useRef(null)];
 
@@ -67,7 +68,10 @@ const SecondPartBox = ({
       }
     }
 
+    console.log(isEnd);
+
     setEnde(isEnd);
+    returnEnd(isEnd);
   }, [hide]);
 
   useEffect(() => {

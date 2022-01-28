@@ -129,7 +129,7 @@ for (let index in list) {
   }
 }
 
-const Game1 = () => {
+const Game1 = ({ nextLesson }) => {
   const leftDropArea = useRef(null);
   const centerDropArea = useRef(null);
   const rightDropArea = useRef(null);
@@ -184,6 +184,8 @@ const Game1 = () => {
     }
   }, [helpOverlay]);
 
+  const [end, setEnd] = useState(false);
+
   return (
     <>
       <StatusBar
@@ -192,6 +194,7 @@ const Game1 = () => {
         setInfoOverlay={setInfoOverlay}
         setHelpOverlay={setHelpOverlay}
         helpFingerPosition={helpFingerPosition}
+        preventHelp={end}
       />
       <div className="game1">
         {list.map((item, index) => {
@@ -245,8 +248,14 @@ const Game1 = () => {
           moveFinger={setHelpFingerPosition}
           setHelpMove={setHelpMove}
           helpMove={helpMove}
+          returnEnd={setEnd}
         />
       </div>
+      {end && (
+        <div className="end-button game1-button" onClick={nextLesson}>
+          Weiter
+        </div>
+      )}
     </>
   );
 };

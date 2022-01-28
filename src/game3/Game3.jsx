@@ -8,7 +8,7 @@ import Screen2 from "./screen2/screen2";
 import Screen3 from "./screen3/Screen3";
 import StatusBar from "../UI/StatusBar";
 
-const Game3 = () => {
+const Game3 = ({ nextLesson }) => {
   const [showGroup, setShowGroup] = useState(true);
   const [infoText, setInfoText] = useState(
     "Sieh dir die Sätze noch einmal an."
@@ -18,6 +18,8 @@ const Game3 = () => {
   const [helpOverlay, setHelpOverlay] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [helpFingerPosition, setHelpFingerPosition] = useState("init");
+
+  const [end, setEnd] = useState(false);
 
   useEffect(() => {
     if (!infoOverlay && step === 0) {
@@ -76,6 +78,7 @@ const Game3 = () => {
           <Screen3
             helpOverlay={helpOverlay}
             setHelpFingerPosition={setHelpFingerPosition}
+            setEnd={setEnd}
           />
         )}
       </div>
@@ -85,7 +88,13 @@ const Game3 = () => {
         setInfoOverlay={setInfoOverlay}
         setHelpOverlay={setHelpOverlay}
         helpFingerPosition={helpFingerPosition}
+        preventHelp={end}
       />
+      {end && (
+        <div className="end-button game1-button" onClick={nextLesson}>
+          Weiter
+        </div>
+      )}
     </>
   );
 };

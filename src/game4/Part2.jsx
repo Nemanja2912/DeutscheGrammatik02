@@ -203,85 +203,87 @@ const Part2 = ({
       setPreventMove(true);
       let sentence = document.querySelector(".sentence");
 
-      setHelpFingerPosition([
-        circleRef.current.getBoundingClientRect().left +
-          verbElement.width / 5 / 2 -
-          10,
-        circleRef.current.getBoundingClientRect().top + 10,
-      ]);
-
       setTimeout(() => {
-        for (let i = 0; i < sentence.children.length; i++) {
-          sentence.children[i].style.backgroundColor = "transparent";
-        }
         setHelpFingerPosition([
-          sentence.children[verbID].getBoundingClientRect().left,
+          circleRef.current.getBoundingClientRect().left +
+            verbElement.width / 5 / 2 -
+            10,
           circleRef.current.getBoundingClientRect().top + 10,
         ]);
 
-        circleRef.current.style.transition = "1000ms linear";
-
-        setVerbElement((prev) => {
-          return {
-            ...prev,
-            left: sentence.children[verbID].getBoundingClientRect().left,
-          };
-        });
-
         setTimeout(() => {
-          sentence.children[verbID].style.backgroundColor = "#A0C814";
-        }, 1000);
-
-        setTimeout(() => {
+          for (let i = 0; i < sentence.children.length; i++) {
+            sentence.children[i].style.backgroundColor = "transparent";
+          }
           setHelpFingerPosition([
-            circleRef.current.getBoundingClientRect().right -
-              verbElement.width / 5 / 2 -
-              10,
+            sentence.children[verbID].getBoundingClientRect().left,
             circleRef.current.getBoundingClientRect().top + 10,
           ]);
 
+          circleRef.current.style.transition = "1000ms linear";
+
+          setVerbElement((prev) => {
+            return {
+              ...prev,
+              left: sentence.children[verbID].getBoundingClientRect().left,
+            };
+          });
+
+          setTimeout(() => {
+            sentence.children[verbID].style.backgroundColor = "#A0C814";
+          }, 1000);
+
           setTimeout(() => {
             setHelpFingerPosition([
-              sentence.children[
-                sentence.children.length - 1
-              ].getBoundingClientRect().right -
-                sentence.children[
-                  sentence.children.length - 1
-                ].getBoundingClientRect().width /
-                  2,
+              circleRef.current.getBoundingClientRect().right -
+                verbElement.width / 5 / 2 -
+                10,
               circleRef.current.getBoundingClientRect().top + 10,
             ]);
 
-            setVerbElement((prev) => {
-              return {
-                ...prev,
-                width:
+            setTimeout(() => {
+              setHelpFingerPosition([
+                sentence.children[
+                  sentence.children.length - 1
+                ].getBoundingClientRect().right -
                   sentence.children[
                     sentence.children.length - 1
-                  ].getBoundingClientRect().right -
-                  sentence.children[verbID].getBoundingClientRect().left -
-                  15,
-              };
-            });
+                  ].getBoundingClientRect().width /
+                    2,
+                circleRef.current.getBoundingClientRect().top + 10,
+              ]);
 
-            setTimeout(() => {
-              sentence.children[
-                sentence.children.length - 1
-              ].style.backgroundColor = "#A0C814";
-
-              setIndicator({ active: true, wrong: false });
-              setOpacity(true);
-              setHelpFingerPosition("init");
-              setHelpFingerPosition(false);
+              setVerbElement((prev) => {
+                return {
+                  ...prev,
+                  width:
+                    sentence.children[
+                      sentence.children.length - 1
+                    ].getBoundingClientRect().right -
+                    sentence.children[verbID].getBoundingClientRect().left -
+                    15,
+                };
+              });
 
               setTimeout(() => {
-                setLevel((prev) => prev + 1);
-                setIndicator({ active: false, wrong: false });
+                sentence.children[
+                  sentence.children.length - 1
+                ].style.backgroundColor = "#A0C814";
+
+                setIndicator({ active: true, wrong: false });
+                setOpacity(true);
+                setHelpFingerPosition("init");
+                setHelpFingerPosition(false);
+
+                setTimeout(() => {
+                  setLevel((prev) => prev + 1);
+                  setIndicator({ active: false, wrong: false });
+                }, 1000);
               }, 1000);
-            }, 1000);
+            }, 1250);
           }, 1250);
         }, 1250);
-      }, 1250);
+      }, 500);
     }
   }, [helpOverlay]);
 

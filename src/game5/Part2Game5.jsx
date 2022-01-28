@@ -139,7 +139,13 @@ for (let i = 0; i < sentenceList.length; i++) {
 
 const topPos = [573, 494, 415, 336, 257];
 
-const Part2Game5 = ({ setHelpFingerPosition, helpOverlay }) => {
+const Part2Game5 = ({
+  setHelpFingerPosition,
+  helpOverlay,
+  setInfoOverlay,
+  setInfoText,
+  setTitleEnd,
+}) => {
   const [level, setLevel] = useState(0);
   const [availablePos, setAvailablePos] = useState([
     true,
@@ -356,6 +362,11 @@ const Part2Game5 = ({ setHelpFingerPosition, helpOverlay }) => {
   const [preventHelp, setPreventHelp] = useState(false);
 
   useEffect(() => {
+    if (level === 5) {
+    }
+  }, [level]);
+
+  useEffect(() => {
     let optionList = Array.from(document.querySelectorAll(".option"));
     if (preventHelp) {
       setHelpFingerPosition("init");
@@ -500,6 +511,24 @@ const Part2Game5 = ({ setHelpFingerPosition, helpOverlay }) => {
         <div className="clone-circle"></div>
       </div>
       <Indicator active={indicator.active} wrong={indicator.wrong} />
+      {level === 5 && (
+        <div
+          className="end-button game5-button"
+          onClick={() => {
+            setInfoOverlay(true);
+            setTitleEnd(true);
+            setInfoText(
+              <p>
+                Das war die letzte Aufgabe.
+                <br /> Du kannst im Menü eine andere Aufgabe auswählen und sie
+                wiederholen.
+              </p>
+            );
+          }}
+        >
+          ENDE
+        </div>
+      )}
     </>
   );
 };

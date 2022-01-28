@@ -58,7 +58,7 @@
 }
 
 .game5 .circles .circle {
-  background-color: #788287;
+  background-color: #939ea3;
   position: absolute;
   border-radius: 50%;
   display: flex;
@@ -143,12 +143,12 @@
 }
 
 .game5 .part2 .option .circle {
-  background-color: #788287;
+  background-color: #939ea3;
   position: absolute;
 }
 
 .game5 .part2 .clone-circle .circle {
-  background-color: #788287;
+  background-color: #939ea3;
   position: absolute;
   border-radius: 50%;
   display: flex;
@@ -160,5 +160,10 @@
   font-size: 14px;
   text-align: center;
   cursor: pointer;
+}
+
+.game5-button {
+  left: 550px;
+  top: 560px;
 }
 /*# sourceMappingURL=game5.css.map */

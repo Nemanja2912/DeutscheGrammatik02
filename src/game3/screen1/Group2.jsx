@@ -38,12 +38,12 @@ const Group2 = () => {
 
         <div className="balls">
           <Ball>Peter</Ball>
-          <Ball color={"#3FA0C8"} ballRef={verb1}>
+          <Ball color={"#3FA0C8"} secondColor={"#378aad"} ballRef={verb1}>
             muss
           </Ball>
           <Ball>zu Hause</Ball>
           <Ball>Vokabeln</Ball>
-          <Ball color={"#3FA0C8"} ballRef={verb2}>
+          <Ball color={"#3FA0C8"} secondColor={"#378aad"} ballRef={verb2}>
             lernen
           </Ball>
         </div>

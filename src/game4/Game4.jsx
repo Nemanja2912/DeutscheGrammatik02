@@ -54,7 +54,7 @@ let sentenceList2 = [
   { words: ["Ich ", "habe ", "wieder ", "geträumt."], verbID: 1 },
 ];
 
-const Game4 = () => {
+const Game4 = ({ nextLesson }) => {
   const dropRef = useRef(null);
 
   const moveCloneElementOnPosition = (element) => {
@@ -333,8 +333,7 @@ const Game4 = () => {
         feedback = (
           <p>
             Du hast {numberSentStrings[rightSentence]} richtig gefunden, aber
-            auch
-            {numberSentStrings[wrongSentence]} falsch ausgewählt. Ziehe
+            auch {numberSentStrings[wrongSentence]} falsch ausgewählt. Ziehe{" "}
             {wrongSentences} wieder aus dem blauen Feld nach oben.
             <br /> Tipp: Die Satzklammer hat immer zwei Teile. Suche weiter!
           </p>
@@ -353,6 +352,7 @@ const Game4 = () => {
         "Du hast noch gar keinen Satz ausgewählt. Ziehe die Sätze mit Satzklammer auf den unteren Bereich.";
     } else if (rightSentence === totalRightSententences) {
       feedback = "Super! Du hast alle Sätze mit Satzklammer gefunden!";
+      setPreventHelp(false);
       setIsDone(false);
     } else {
       if (rightSentence > totalRightSententences - 3) {
@@ -381,14 +381,21 @@ const Game4 = () => {
   const [level, setLevel] = useState(0);
 
   useEffect(() => {
+    if (rightSentence === 7) {
+      setPreventHelp(true);
+    } else {
+      setPreventHelp(false);
+    }
+  }, [rightSentence]);
+
+  useEffect(() => {
     if (!isDone || rightSentence === 7) {
       setHelpFingerPosition("init");
-      setTimeout(() => {
-        setHelpFingerPosition(false);
-      }, 10);
+      setHelpFingerPosition(false);
 
       return;
     }
+
     const answerListId = [1, 2, 4, 5, 7, 9, 10];
 
     if (helpOverlay) {
@@ -490,8 +497,17 @@ const Game4 = () => {
   useEffect(() => {
     if (level === 7) {
       setHelpFingerPosition("init");
+      setHelpFingerPosition(false);
     }
   }, [level]);
+
+  useEffect(() => {
+    if (isDone) {
+      setInfoText(<p>Verbinde die Teile der Satzklammer mit dem Magnet.</p>);
+    }
+  }, [isDone]);
+
+  const [preventHelp, setPreventHelp] = useState(false);
 
   return (
     <>
@@ -546,35 +562,42 @@ const Game4 = () => {
               </Part2>
             )
         )}
-      {level === 7 &&
-        sentenceList2.map((sentence) => (
-          <Part3 verbID={sentence.verbID}>
-            {sentence.words.map((word, index) => (
-              <span
-                verb={
-                  index === sentence.verbID ||
-                  index === sentence.words.length - 1
-                    ? "true"
-                    : null
-                }
-                className={`${
-                  index === sentence.verbID ||
-                  index === sentence.words.length - 1
-                    ? "verb"
-                    : ""
-                }`}
-              >
-                {word}
-              </span>
-            ))}
-          </Part3>
-        ))}
+      {level === 7 && (
+        <>
+          {sentenceList2.map((sentence) => (
+            <Part3 verbID={sentence.verbID}>
+              {sentence.words.map((word, index) => (
+                <span
+                  verb={
+                    index === sentence.verbID ||
+                    index === sentence.words.length - 1
+                      ? "true"
+                      : null
+                  }
+                  className={`${
+                    index === sentence.verbID ||
+                    index === sentence.words.length - 1
+                      ? "verb"
+                      : ""
+                  }`}
+                >
+                  {word}
+                </span>
+              ))}
+            </Part3>
+          ))}
+          <div className="end-button game4-button" onClick={nextLesson}>
+            Weiter
+          </div>
+        </>
+      )}
       <StatusBar
         infoText={infoText}
         infoOverlay={infoOverlay}
         setInfoOverlay={setInfoOverlay}
         setHelpOverlay={setHelpOverlay}
         helpFingerPosition={helpFingerPosition}
+        preventHelp={preventHelp}
       />
       {feedback && (
         <FeedbackOverlay closeFunc={() => setFeedback(false)}>

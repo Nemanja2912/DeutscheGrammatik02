@@ -1,4 +1,9 @@
-const Ball = ({ children, color = "#a0c813", ballRef }) => {
+const Ball = ({
+  children,
+  color = "#a0c813",
+  secondColor = "#8eb111",
+  ballRef,
+}) => {
   const ballStyle = {
     margin: "0",
     position: "relative",
@@ -6,7 +11,7 @@ const Ball = ({ children, color = "#a0c813", ballRef }) => {
     borderRadius: "50%",
     height: "80px",
     width: "80px",
-    background: `radial-gradient(circle at 25px 25px, ${color}, #5f5f5f)`,
+    background: `radial-gradient(circle at 25px 25px, ${color}, ${secondColor})`,
     fontSize: "16px",
     overflow: "hidden",
     display: "flex",

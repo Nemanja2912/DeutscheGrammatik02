@@ -57,7 +57,7 @@
 
   .circles {
     .circle {
-      background-color: #788287;
+      background-color: #939ea3;
       position: absolute;
       border-radius: 50%;
       display: flex;
@@ -149,14 +149,14 @@
       width: 100%;
 
       .circle {
-        background-color: #788287;
+        background-color: #939ea3;
         position: absolute;
       }
     }
 
     .clone-circle {
       .circle {
-        background-color: #788287;
+        background-color: #939ea3;
         position: absolute;
         border-radius: 50%;
         display: flex;
@@ -171,4 +171,9 @@
       }
     }
   }
+}
+
+.game5-button {
+  left: 550px;
+  top: 560px;
 }
