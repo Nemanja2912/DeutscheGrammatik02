@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/DeutscheGrammatik02/static/css/main.3056e822.chunk.css",
-    "main.js": "/DeutscheGrammatik02/static/js/main.f4fc41a0.chunk.js",
-    "main.js.map": "/DeutscheGrammatik02/static/js/main.f4fc41a0.chunk.js.map",
+    "main.css": "/DeutscheGrammatik02/static/css/main.7148a4e2.chunk.css",
+    "main.js": "/DeutscheGrammatik02/static/js/main.19e78454.chunk.js",
+    "main.js.map": "/DeutscheGrammatik02/static/js/main.19e78454.chunk.js.map",
     "runtime-main.js": "/DeutscheGrammatik02/static/js/runtime-main.7e4cb29b.js",
     "runtime-main.js.map": "/DeutscheGrammatik02/static/js/runtime-main.7e4cb29b.js.map",
     "static/js/2.f84403ba.chunk.js": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js",
     "static/js/2.f84403ba.chunk.js.map": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js.map",
     "index.html": "/DeutscheGrammatik02/index.html",
-    "static/css/main.3056e822.chunk.css.map": "/DeutscheGrammatik02/static/css/main.3056e822.chunk.css.map",
+    "static/css/main.7148a4e2.chunk.css.map": "/DeutscheGrammatik02/static/css/main.7148a4e2.chunk.css.map",
     "static/js/2.f84403ba.chunk.js.LICENSE.txt": "/DeutscheGrammatik02/static/js/2.f84403ba.chunk.js.LICENSE.txt",
     "static/media/general.css": "/DeutscheGrammatik02/static/media/GoetheGothicBold.612e7d20.ttf",
     "static/media/arrow.6af90567.svg": "/DeutscheGrammatik02/static/media/arrow.6af90567.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.7e4cb29b.js",
     "static/js/2.f84403ba.chunk.js",
-    "static/css/main.3056e822.chunk.css",
-    "static/js/main.f4fc41a0.chunk.js"
+    "static/css/main.7148a4e2.chunk.css",
+    "static/js/main.19e78454.chunk.js"
   ]
 }
