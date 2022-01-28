@@ -8,7 +8,7 @@ import Game4 from "./game4/Game4";
 import Game5 from "./game5/Game5";
 
 function App() {
-  const [navMenuItem, setNavMenuItem] = useState(4);
+  const [navMenuItem, setNavMenuItem] = useState(0);
   const [load, setLoad] = useState(false);
   const menuRef = useRef(null);
 
