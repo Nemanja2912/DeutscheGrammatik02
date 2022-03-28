@@ -53,7 +53,7 @@ const Game3 = ({ nextLesson }) => {
         <br />
         Wo stehen diese Teile im Satz?
         <br />
-        Ziehe die richtigen Wörter in die Regel unten.
+        Ziehe die richtigen Wörter unten in die Regel.
       </p>
     );
     setInfoOverlay(true);

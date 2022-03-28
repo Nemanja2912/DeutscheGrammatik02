@@ -11,7 +11,7 @@ let sentenceList = [
     "Ich ",
     "bin ",
     "der beste ",
-    "Fußball-Spieler ",
+    "Fußballspieler ",
     "in ",
     "meiner Mannschaft.",
   ],
@@ -19,7 +19,7 @@ let sentenceList = [
   ["Jeden Tag ", "stehe ", "ich ", "früh ", "auf."],
   ["Dann ", "fahre ", "ich ", "zum ", "Stadion."],
   ["Dort ", "muss ", "ich ", "viel ", "üben."],
-  ["Später ", "möchte ", "ich ", "Fußball-Weltmeister ", "werden."],
+  ["Später ", "möchte ", "ich ", "Fußballweltmeister ", "werden."],
   ["Dann ", "bekomme ", "ich ", "einen ", "goldenen Pokal."],
   ["Oh, ", "jemand ", "ruft ", "mich ", "an."],
   ["Vielleicht ", "sind ", "es ", "meine ", "Fans."],
@@ -35,7 +35,7 @@ let sentenceList2 = [
   { words: ["Jeden Tag ", "stehe ", "ich ", "früh ", "auf."], verbID: 1 },
   { words: ["Dort ", "muss ", "ich ", "viel ", "üben."], verbID: 1 },
   {
-    words: ["Später ", "möchte ", "ich ", "Fußball-Weltmeister ", "werden."],
+    words: ["Später ", "möchte ", "ich ", "Fußballweltmeister ", "werden."],
     verbID: 1,
   },
   { words: ["Oh, ", "jemand ", "ruft ", "mich ", "an."], verbID: 2 },
@@ -352,6 +352,7 @@ const Game4 = ({ nextLesson }) => {
         "Du hast noch gar keinen Satz ausgewählt. Ziehe die Sätze mit Satzklammer auf den unteren Bereich.";
     } else if (rightSentence === totalRightSententences) {
       feedback = "Super! Du hast alle Sätze mit Satzklammer gefunden!";
+
       setPreventHelp(false);
       setIsDone(false);
     } else {
@@ -502,7 +503,7 @@ const Game4 = ({ nextLesson }) => {
   }, [level]);
 
   useEffect(() => {
-    if (isDone) {
+    if (!isDone) {
       setInfoText(<p>Verbinde die Teile der Satzklammer mit dem Magnet.</p>);
     }
   }, [isDone]);
@@ -600,7 +601,17 @@ const Game4 = ({ nextLesson }) => {
         preventHelp={preventHelp}
       />
       {feedback && (
-        <FeedbackOverlay closeFunc={() => setFeedback(false)}>
+        <FeedbackOverlay
+          closeFunc={() => {
+            setFeedback(false);
+
+            if (rightSentence === 7) {
+              setTimeout(() => {
+                setInfoOverlay(true);
+              }, 50);
+            }
+          }}
+        >
           {feedbackText}
         </FeedbackOverlay>
       )}

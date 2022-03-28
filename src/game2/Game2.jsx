@@ -27,6 +27,7 @@ const Game2 = ({ nextLesson }) => {
   const [ballActive, setBallActive] = useState(ballActiveList);
   const [ballStatus, setBallStatus] = useState(ballActiveStatus);
   const [buttonShow, setButtonShow] = useState(false);
+  const [locationBall, setLocationBall] = useState(false);
   const [verbCircle, setVerbCircle] = useState({
     opacity: 0,
     left: "50%",
@@ -63,6 +64,12 @@ const Game2 = ({ nextLesson }) => {
   //SetBallPosition
   const setBallPosition = () => {
     let ballList = Array.from(document.querySelectorAll(".ballClone"));
+
+    // console.log(ballList);
+    // console.log(locationBall);
+
+    // if (locationBall) {
+    // }
 
     for (let i = 0; i < ballList.length; i++) {
       ballList[i].style.transition = "200ms";
@@ -160,6 +167,12 @@ const Game2 = ({ nextLesson }) => {
   ) => {
     if (preventMove) return;
     preventMove = true;
+
+    if (contIndex === 2) {
+      setLocationBall(true);
+    } else if (contIndex < 2) {
+      setLocationBall(false);
+    }
 
     let el = e ? e.target : ball;
 
@@ -502,6 +515,7 @@ const Game2 = ({ nextLesson }) => {
             case 7:
               copyList[4][1] = false;
               copyList[4][2] = false;
+              copyList[4][3] = false;
               break;
             default:
               copyList = [...copyList];
@@ -643,6 +657,10 @@ const Game2 = ({ nextLesson }) => {
 
     if (activeContainer === 1 && ballIndex % 2 === 0) {
       document.getElementById("clone-div").insertBefore(ball, followingBall);
+    } else if (locationBall && activeContainer === 4) {
+      document
+        .getElementById("clone-div")
+        .insertBefore(ball, document.getElementById("clone-div").children[2]);
     } else if (activeContainer > 1) {
       document
         .getElementById("clone-div")

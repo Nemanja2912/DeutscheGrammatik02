@@ -107,19 +107,19 @@ const sentenceList = [
         allowed: [0, 2],
       },
       {
-        word: "macht",
+        word: "kommt",
         allowed: [1],
       },
       {
-        word: "die Bäckerei",
-        allowed: [3, 2],
+        word: "in Hamburg",
+        allowed: [3],
       },
       {
-        word: "um 18 Uhr",
+        word: "um 19 Uhr",
         allowed: [0, 2],
       },
       {
-        word: "zu",
+        word: "an",
         allowed: [4],
       },
     ],
