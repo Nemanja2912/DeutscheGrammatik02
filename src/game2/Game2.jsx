@@ -106,8 +106,6 @@ const Game2 = ({ nextLesson }) => {
   const setVerbCirclePosition = (contIndex) => {
     let ballList = Array.from(document.querySelectorAll(".ballClone"));
 
-    // console.log(ballList, "bl");
-
     let validIndex = ballList.length - 1;
 
     if (
@@ -235,6 +233,8 @@ const Game2 = ({ nextLesson }) => {
 
         let statusBallList = [...ballStatus];
 
+        console.log("rob");
+
         if (
           (contIndex === 1 || contIndex === 0) &&
           ballList[1]?.getAttribute("ballindex")
@@ -242,6 +242,8 @@ const Game2 = ({ nextLesson }) => {
           for (let i = 0; i < ballStatus.length; i++) {
             if (i === 1 || i === 0) {
               let switchBallIndex = +ballList[1]?.getAttribute("ballindex");
+
+              console.log("bob");
 
               switch (switchBallIndex) {
                 case 0:
@@ -256,6 +258,7 @@ const Game2 = ({ nextLesson }) => {
                   statusBallList[1][7] = true;
                   statusBallList[1][12] = true;
                   statusBallList[1][13] = true;
+
                   break;
                 case 2:
                 case 3:
@@ -269,6 +272,8 @@ const Game2 = ({ nextLesson }) => {
                   statusBallList[1][9] = true;
                   statusBallList[1][14] = true;
                   statusBallList[1][15] = true;
+                  statusBallList[1][20] = true;
+                  statusBallList[1][21] = true;
                   break;
                 case 4:
                 case 5:
@@ -282,6 +287,8 @@ const Game2 = ({ nextLesson }) => {
                   statusBallList[1][11] = true;
                   statusBallList[1][16] = true;
                   statusBallList[1][17] = true;
+                  statusBallList[1][22] = true;
+                  statusBallList[1][23] = true;
                   break;
                 default:
                   statusBallList = [...statusBallList];
@@ -392,6 +399,8 @@ const Game2 = ({ nextLesson }) => {
               copyList[1][9] = false;
               copyList[1][14] = false;
               copyList[1][15] = false;
+              copyList[1][20] = false;
+              copyList[1][21] = false;
               break;
             case 4:
             case 5:
@@ -405,6 +414,8 @@ const Game2 = ({ nextLesson }) => {
               copyList[1][11] = false;
               copyList[1][16] = false;
               copyList[1][17] = false;
+              copyList[1][22] = false;
+              copyList[1][23] = false;
               break;
             default:
               copyList = [...copyList];
@@ -419,6 +430,10 @@ const Game2 = ({ nextLesson }) => {
             case 7:
             case 12:
             case 13:
+            case 20:
+            case 21:
+            case 22:
+            case 23:
               copyList[2][0] = false;
               copyList[2][1] = false;
               copyList[2][2] = false;
@@ -457,16 +472,30 @@ const Game2 = ({ nextLesson }) => {
           switch (ballIndex) {
             case 0:
             case 1:
-            case 4:
-            case 5:
               copyList[3][0] = false;
               copyList[3][2] = false;
               copyList[3][3] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
               break;
             case 2:
             case 3:
+            case 12:
+            case 13:
               copyList[3][0] = false;
+              copyList[3][1] = false;
               copyList[3][3] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
+              break;
+            case 4:
+            case 5:
+            case 20:
+            case 21:
+              copyList[3][0] = false;
+              copyList[3][2] = false;
+              copyList[3][3] = false;
+              copyList[3][4] = false;
               break;
             case 6:
             case 7:
@@ -476,28 +505,37 @@ const Game2 = ({ nextLesson }) => {
               copyList[3][1] = false;
               copyList[3][2] = false;
               copyList[3][3] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
               break;
             case 8:
             case 9:
               copyList[3][1] = false;
               copyList[3][2] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
               break;
             case 10:
             case 11:
               copyList[3][2] = false;
               copyList[3][3] = false;
-              break;
-            case 12:
-            case 13:
-              copyList[3][0] = false;
-              copyList[3][1] = false;
-              copyList[3][3] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
               break;
             case 14:
             case 15:
               copyList[3][0] = false;
               copyList[3][1] = false;
               copyList[3][2] = false;
+              copyList[3][4] = false;
+              copyList[3][5] = false;
+              break;
+            case 22:
+            case 23:
+              copyList[3][0] = false;
+              copyList[3][1] = false;
+              copyList[3][2] = false;
+              copyList[3][3] = false;
               break;
             default:
               copyList = [...copyList];
@@ -519,12 +557,18 @@ const Game2 = ({ nextLesson }) => {
             case 13:
             case 14:
             case 15:
+            case 20:
+            case 21:
               copyList[4][1] = false;
               break;
             case 6:
             case 7:
               copyList[4][1] = false;
               copyList[4][2] = false;
+              break;
+            case 22:
+            case 23:
+              copyList[4][0] = false;
               copyList[4][3] = false;
               break;
             default:
@@ -567,15 +611,12 @@ const Game2 = ({ nextLesson }) => {
           for (let j = 0; j < ballStatus[i].length; j++) {
             //ovde
             if (ballStatus[i][j]) {
-              console.log(ballStatus);
               stop = true;
               nextContainerIndex = i;
               break;
             }
           }
         }
-
-        console.log(nextContainerIndex, "contind");
 
         if (!stop) {
           setActiveContainer(5);
@@ -1226,7 +1267,7 @@ const Game2 = ({ nextLesson }) => {
                 <Container
                   inLine={containerIndex === 1 ? 6 : 2}
                   inRow={
-                    containerIndex === 1 ? 4 : containerIndex === 2 ? 3 : 2
+                    containerIndex === 1 ? 4 : containerIndex === 3 ? 3 : 2
                   }
                   active={containerIndex === activeContainer}
                   containerRef={containerRef[containerIndex]}

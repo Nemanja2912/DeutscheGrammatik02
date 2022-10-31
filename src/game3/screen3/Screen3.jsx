@@ -10,7 +10,7 @@ let options = [
   {
     word: "Verbstamm",
     dropPosition: 0,
-    customDropPos: 0,
+    customDropPos: 2,
   },
   {
     word: "2",
@@ -40,7 +40,7 @@ let options = [
   {
     word: "Hilfsverb",
     dropPosition: 0,
-    customDropPos: 2,
+    customDropPos: 0,
   },
 ];
 
@@ -199,6 +199,7 @@ const Screen3 = ({ helpOverlay, setHelpFingerPosition, setEnd }) => {
           <span className="blank" ref={blankGroup2Ref3}>
             .
           </span>{" "}
+          )
         </div>
         steht immer am{" "}
         <span className="blank" ref={dropRefList[3]}>

@@ -9,7 +9,7 @@ import StatusBar from "../UI/StatusBar";
 const lineList = [
   {
     top: 566,
-    words: ["Man", "die Regel", "fleißigel"],
+    words: ["Man", "die Regel", "fleißig"],
     diagonalID: 0,
   },
   {

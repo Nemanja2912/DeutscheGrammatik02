@@ -26,8 +26,8 @@ const wordList = [
     "hat",
     "geplant",
   ],
-  ["zu Hause", "im Laden", "draußen", "ins Kino", "den Urlaub", "ein Geschenk"],
-  ["Voka- beln", "ein Buch", "mich", "Geige"],
+  ["zu Hause", "im Laden", "draußen", "ins Kino"],
+  ["Voka- beln", "ein Buch", "mich", "Geige", "den Urlaub", "ein Geschenk"],
   ["um 6 Uhr", "gestern", "im Juli", "am Abend"],
 ];
 

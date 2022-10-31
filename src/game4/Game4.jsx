@@ -343,7 +343,7 @@ const Game4 = ({ nextLesson }) => {
           <p>
             Leider hast du bisher nur falsche Sätze ausgewählt. Ziehe{" "}
             {wrongSentences} wieder aus dem blauen Feld nach oben.
-            <br /> Tipp: Die Satzklammer hat immer zwei Teile. Suche weiter!;
+            <br /> Tipp: Die Satzklammer hat immer zwei Teile. Suche weiter!
           </p>
         );
       }

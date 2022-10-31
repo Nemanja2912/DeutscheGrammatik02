@@ -23,21 +23,29 @@ const Game3 = ({ nextLesson }) => {
 
   useEffect(() => {
     if (!infoOverlay && step === 0) {
-      setTimeout(() => {
-        setStep(1);
-        setShowGroup(false);
+      setTimeout(
+        () => {
+          setStep(1);
+          setShowGroup(false);
 
-        setTimeout(() => {
-          setInfoText(
-            <p>
-              Lies die Sätze noch einmal. <br />
-              Achte auf die Teile der Satzklammer.
-            </p>
+          setTimeout(
+            () => {
+              setInfoText(
+                <p>
+                  Lies die Sätze noch einmal. <br />
+                  Achte auf die Teile der Satzklammer.
+                </p>
+              );
+              setInfoOverlay(true);
+              setStep(2);
+            },
+            0
+            // 3000
           );
-          setInfoOverlay(true);
-          setStep(2);
-        }, 3000);
-      }, 1500);
+        },
+        0
+        // 6500
+      );
     }
 
     if (!infoOverlay && step === 2) {

@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Menu
+      <Menu
         navMenuItem={navMenuItem}
         setNavMenuItem={setNavMenuItem}
         navButtonRef={navButtonRef}
@@ -79,9 +79,7 @@ function App() {
           }}
         />
       )}
-      {navMenuItem === 4 && <Game5 />} */}
-
-      <Game2 />
+      {navMenuItem === 4 && <Game5 />}
     </div>
   );
 }
