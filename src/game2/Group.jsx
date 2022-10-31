@@ -1,5 +1,5 @@
 const Group = ({ children }) => {
-  const groupStyle = { display: "flex", height: "240px" };
+  const groupStyle = { display: "flex", height: "280px" };
   return (
     <div className="group" style={groupStyle}>
       {children}

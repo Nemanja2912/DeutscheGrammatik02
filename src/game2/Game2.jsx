@@ -9,19 +9,25 @@ import { useState, useEffect, useReducer, createRef, useRef } from "react";
 import wordList from "./wordList/wordList";
 import StatusBar from "../UI/StatusBar";
 
-let ballActiveList = [];
-let ballActiveStatus = [];
+const ballList = () => {
+  let ballActiveList = [];
+  let ballActiveStatus = [];
 
-for (let i = 0; i < wordList.length; i++) {
-  ballActiveList[i] = [];
-  ballActiveStatus[i] = [];
-  for (let j = 0; j < wordList[i].length; j++) {
-    ballActiveList[i][j] = false;
-    ballActiveStatus[i][j] = true;
+  for (let i = 0; i < wordList.length; i++) {
+    ballActiveList[i] = [];
+    ballActiveStatus[i] = [];
+    for (let j = 0; j < wordList[i].length; j++) {
+      ballActiveList[i][j] = false;
+      ballActiveStatus[i][j] = true;
+    }
   }
-}
+
+  return [ballActiveList, ballActiveStatus];
+};
 
 const Game2 = ({ nextLesson }) => {
+  const [ballActiveList, ballActiveStatus] = ballList();
+
   const [lineLevel, setLineLevel] = useState(0);
   const [ballLength, setballLength] = useState(0);
   const [ballActive, setBallActive] = useState(ballActiveList);
@@ -51,6 +57,8 @@ const Game2 = ({ nextLesson }) => {
   ballRefs.current = wordList.map((container, i) => {
     return container.map((_, j) => ballRefs[j] ?? createRef());
   });
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     setVerbCircle((prev) => {
@@ -97,6 +105,8 @@ const Game2 = ({ nextLesson }) => {
   //SetVerbCirclePosition
   const setVerbCirclePosition = (contIndex) => {
     let ballList = Array.from(document.querySelectorAll(".ballClone"));
+
+    // console.log(ballList, "bl");
 
     let validIndex = ballList.length - 1;
 
@@ -548,21 +558,24 @@ const Game2 = ({ nextLesson }) => {
           validIndex--;
         }
 
-        let nextContainerIndex =
-          +ballList[validIndex].getAttribute("containerindex") + 1;
+        let nextContainerIndex = +ball.getAttribute("containerindex") + 1;
 
         let stop = false;
 
         for (let i = nextContainerIndex; i < 5; i++) {
           if (stop) break;
-          for (let j = 0; j < ballActiveStatus[i].length; j++) {
-            if (ballActiveStatus[i][j]) {
+          for (let j = 0; j < ballStatus[i].length; j++) {
+            //ovde
+            if (ballStatus[i][j]) {
+              console.log(ballStatus);
               stop = true;
               nextContainerIndex = i;
               break;
             }
           }
         }
+
+        console.log(nextContainerIndex, "contind");
 
         if (!stop) {
           setActiveContainer(5);
@@ -660,7 +673,7 @@ const Game2 = ({ nextLesson }) => {
     } else if (locationBall && activeContainer === 4) {
       document
         .getElementById("clone-div")
-        .insertBefore(ball, document.getElementById("clone-div").children[2]);
+        .insertBefore(ball, document.querySelector(".verb1").nextSibling);
     } else if (activeContainer > 1) {
       document
         .getElementById("clone-div")
@@ -758,6 +771,8 @@ const Game2 = ({ nextLesson }) => {
           copySvg.style.width =
             svgRef.current.getBoundingClientRect().width / 2 + "px";
         };
+
+        // ovdeee
 
         moveCopySvg(document.querySelector(".copySvg0"), 0);
         moveCopySvg(document.querySelector(".copySvg1"), 1);
@@ -1210,11 +1225,15 @@ const Game2 = ({ nextLesson }) => {
               {wordList.map((container, containerIndex) => (
                 <Container
                   inLine={containerIndex === 1 ? 6 : 2}
-                  inRow={containerIndex === 1 ? 3 : 2}
+                  inRow={
+                    containerIndex === 1 ? 4 : containerIndex === 2 ? 3 : 2
+                  }
                   active={containerIndex === activeContainer}
                   containerRef={containerRef[containerIndex]}
                 >
                   {container.map((word, wordIndex) => {
+                    if (word === "") return <div></div>;
+
                     return (
                       <div
                         className={`element ${`element${containerIndex}${wordIndex}`}`}

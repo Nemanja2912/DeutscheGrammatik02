@@ -1,7 +1,6 @@
 .game5 {
   margin-top: 120px;
 }
-
 .game5 .option {
   position: absolute;
   display: flex;
@@ -11,7 +10,6 @@
   top: 90px;
   gap: 5px;
 }
-
 .game5 .option .circle {
   background-color: #5ac8f5;
   position: absolute;
@@ -26,37 +24,30 @@
   text-align: center;
   cursor: pointer;
 }
-
 .game5 .arrows {
   padding-top: 75px;
 }
-
 .game5 .arrows img {
   position: relative;
   width: 70px;
   z-index: -2;
 }
-
 .game5 .arrows img:first-child {
   left: 437.5px;
 }
-
 .game5 .arrows img:last-child {
   left: 603.5px;
 }
-
 .game5 .drop-zone {
   padding-left: 350px;
   margin-top: 5px;
 }
-
 .game5 .drop-zone img {
   top: 0;
   transition: 1s linear;
   position: relative;
   width: 400px;
 }
-
 .game5 .circles .circle {
   background-color: #939ea3;
   position: absolute;
@@ -72,7 +63,6 @@
   text-align: center;
   transition: 0.5s linear;
 }
-
 .game5 .clone-circle .circle {
   background-color: #5ac8f5;
   position: absolute;
@@ -87,11 +77,12 @@
   text-align: center;
   cursor: pointer;
 }
-
 .game5 .button {
   font-size: 25px;
   background-color: white;
   color: #788287;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   font-weight: 700;
   margin-top: 20px;
@@ -99,22 +90,40 @@
   border-radius: 10px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  animation-name: buttonShow;
-  animation-duration: 1s;
+  -webkit-animation-name: buttonShow;
+          animation-name: buttonShow;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   opacity: 0;
-  animation-fill-mode: forwards;
-  animation-delay: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
   transition: 0.5s;
   position: relative;
   left: 425px;
   text-transform: uppercase;
   top: -100px;
 }
-
 .game5 .button:hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
-
+@-webkit-keyframes buttonShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 @keyframes buttonShow {
   0% {
     opacity: 0;
@@ -131,22 +140,18 @@
     opacity: 1;
   }
 }
-
 .game5 .part2 .drop-zone {
   margin-top: 250px;
 }
-
 .game5 .part2 .option {
   display: block;
   height: 70px;
   width: 100%;
 }
-
 .game5 .part2 .option .circle {
   background-color: #939ea3;
   position: absolute;
 }
-
 .game5 .part2 .clone-circle .circle {
   background-color: #939ea3;
   position: absolute;
@@ -166,4 +171,3 @@
   left: 550px;
   top: 560px;
 }
-/*# sourceMappingURL=game5.css.map */

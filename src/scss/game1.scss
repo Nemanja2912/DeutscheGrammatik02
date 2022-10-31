@@ -34,6 +34,10 @@
       transform: scale(0);
     }
 
+    .show {
+      transform: scale(1);
+    }
+
     .text {
       //   transition: 5s;
       width: max-content;
@@ -137,10 +141,6 @@
       animation-fill-mode: forwards;
       animation-iteration-count: 1;
     }
-  }
-
-  .show {
-    transform: scale(1) !important;
   }
 
   .secondPart {

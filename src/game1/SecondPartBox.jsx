@@ -43,7 +43,11 @@ const SecondPartBox = ({
 
         setHideStatus(i, true);
         setTimeout(() => {
-          setHideStatus(i, false);
+          const hideStatus = () => {
+            setHideStatus(i, false);
+            document.removeEventListener("click", hideStatus);
+          };
+          document.addEventListener("click", hideStatus);
         }, 1500);
       }
     }
@@ -67,8 +71,6 @@ const SecondPartBox = ({
         break;
       }
     }
-
-    console.log(isEnd);
 
     setEnde(isEnd);
     returnEnd(isEnd);

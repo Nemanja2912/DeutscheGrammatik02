@@ -5,17 +5,14 @@
   align-items: center;
   height: 100vh;
 }
-
 .game1 .opacity {
   pointer-events: none;
   opacity: 0;
 }
-
 .game1 .balls {
   display: flex;
   position: absolute;
 }
-
 .game1 .balls .ball {
   margin: 0;
   position: relative;
@@ -35,33 +32,34 @@
   overflow: hidden;
   transform: scale(0);
 }
-
+.game1 .balls .show {
+  transform: scale(1);
+}
 .game1 .balls .text {
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
-
 .game1 .balls .fake-text {
   position: absolute;
   transform: translateY(-300);
 }
-
 .game1 .images {
   position: relative;
   margin-top: 100px;
 }
-
 .game1 .images img {
   height: 200px;
 }
-
 .game1 .images .image2 {
   position: absolute;
   left: 0;
   z-index: 205;
   pointer-events: none;
 }
-
 .game1 .images .blue-circle {
   position: absolute;
   left: 0;
@@ -80,84 +78,88 @@
   transition: 1s;
   font-weight: bold;
 }
-
 .game1 .images .blue-circle:hover {
   transform: scale(1.2);
 }
-
 .game1 .drop-area {
   display: flex;
   gap: 20px;
   margin-top: 20px;
 }
-
 .game1 .drop-area .title {
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
 }
-
 .game1 .drop-area .container {
   background-color: #bbc0c3;
   width: 200px;
   border-radius: 0 0 20px 20px;
   height: 260px;
 }
-
 .game1 .rotate {
-  animation-name: rotate;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  -webkit-animation-name: rotate;
+          animation-name: rotate;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
-
 .game1 .reverse-rotate {
-  animation-name: reverse-rotate;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  -webkit-animation-name: reverse-rotate;
+          animation-name: reverse-rotate;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
-
 .game1 .spin .text {
-  animation-name: spin;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
-
 .game1 .spin .fake-text {
-  animation-name: fake-spin;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
+  -webkit-animation-name: fake-spin;
+          animation-name: fake-spin;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
-
-.game1 .show {
-  transform: scale(1) !important;
-}
-
 .game1 .secondPart {
   transform: translateY(-330px);
   opacity: 0;
   transition: 0.5s;
 }
-
 .game1 .secondPart-drop {
   transform: translateY(-330px);
   transition: 0.5s;
 }
-
 .game1 .secondPart-ball {
   transform: translateY(-330px);
   transition: 0.5s;
   z-index: 1000;
 }
-
 .game1 .second-part-box {
   margin-top: 50px;
   transform: translateY(-330px);
@@ -169,14 +171,12 @@
   border-radius: 10px;
   padding: 25px;
 }
-
 .game1 .second-part-box .details-box {
   position: absolute;
   top: -110px;
   left: 250px;
   z-index: 10000;
 }
-
 .game1 .second-part-box .line {
   display: flex;
   align-items: center;
@@ -186,20 +186,17 @@
   line-height: 40px;
   position: relative;
 }
-
 .game1 .second-part-box .line .blank {
   background-color: #fff;
   width: 200px;
   height: 35px;
   border-radius: 10px;
 }
-
 .game1 .second-part-box .options {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
-
 .game1 .second-part-box .options .dragElement {
   position: relative;
   cursor: pointer;
@@ -215,17 +212,23 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: 0.5s;
 }
-
 .game1 .second-part-box .options .dragElement:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
 .game1 .second-part-box .options .green {
   background-color: #a0c814 !important;
 }
-
 .game1 .box-animation {
   opacity: 1 !important;
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
 @keyframes rotate {
@@ -236,7 +239,14 @@
     transform: rotate(-360deg);
   }
 }
-
+@-webkit-keyframes reverse-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes reverse-rotate {
   0% {
     transform: rotate(0deg);
@@ -245,7 +255,14 @@
     transform: rotate(360deg);
   }
 }
-
+@-webkit-keyframes spin {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(300%);
+  }
+}
 @keyframes spin {
   0% {
     transform: translateY(0%);
@@ -254,7 +271,14 @@
     transform: translateY(300%);
   }
 }
-
+@-webkit-keyframes fake-spin {
+  0% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 @keyframes fake-spin {
   0% {
     transform: translateY(-300%);
@@ -263,8 +287,6 @@
     transform: translateY(0%);
   }
 }
-
 .game1-button {
   top: 575px;
 }
-/*# sourceMappingURL=game1.css.map */

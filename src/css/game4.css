@@ -4,13 +4,11 @@
   flex-direction: column;
   align-items: center;
 }
-
 .game4 .text {
   font-size: 24px;
   line-height: 40px;
   width: 900px;
 }
-
 .game4 .text div {
   display: inline;
   position: relative;
@@ -19,23 +17,19 @@
   top: 0;
   transition: background-color 1s;
 }
-
 .game4 .text div span {
   border-radius: 5px;
   position: relative;
   left: 0;
   top: 0;
 }
-
 .game4 .text div span:hover {
   background-color: #c7c7c7;
 }
-
 .game4 .clone {
   font-size: 24px;
   line-height: 40px;
 }
-
 .game4 .drop {
   margin-top: 50px;
   background-color: #5ac8f5;
@@ -46,29 +40,27 @@
   border-radius: 15px;
   padding: 15px;
 }
-
 .game4 .drop div {
   display: inline;
   margin-left: 0px;
   position: relative;
   cursor: pointer;
 }
-
 .game4 .drop span {
   border-radius: 5px;
   position: relative;
   display: inline-block;
   padding: 0 2.5px;
 }
-
 .game4 .drop span:hover {
-  background-color: #c7c7c7;
+  background-color: rgb(199, 199, 199);
 }
-
 .game4 .button {
   font-size: 25px;
   background-color: white;
   color: #788287;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   font-weight: 700;
   padding: 20px 25px;
@@ -80,11 +72,25 @@
   margin-top: -40px;
   text-transform: uppercase;
 }
-
 .game4 .button:hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }
-
+@-webkit-keyframes buttonShow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 @keyframes buttonShow {
   0% {
     opacity: 0;
@@ -106,7 +112,6 @@
   margin-top: 25px;
   font-size: 24px;
 }
-
 .part2 .cut {
   position: absolute;
   background-color: aqua;
@@ -116,26 +121,24 @@
   width: 100%;
   height: 170px;
 }
-
 .part2 .wrapper {
   display: flex;
   justify-content: center;
 }
-
 .part2 .wrapper .sentence {
   position: relative;
   z-index: 1;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   transform-origin: right;
 }
-
 .part2 .wrapper .sentence span {
   transition: 0.2s;
   padding: 0 5px;
   border-radius: 5px;
   background-color: transparent;
 }
-
 .part2 .rectangle {
   margin-top: 10px;
   border: 40px solid transparent;
@@ -156,7 +159,6 @@
   text-align: center;
   margin-bottom: 15px;
 }
-
 .part3 .verbPointer {
   border: 5px solid #eb6400;
   position: relative;
@@ -166,7 +168,6 @@
   margin-top: 5px;
   border-radius: 3px;
 }
-
 .part3 .verb {
   background-color: #5ac8f5;
   padding: 0 2.5px 0 5px;
@@ -177,4 +178,3 @@
 .game4-button {
   top: 610px;
 }
-/*# sourceMappingURL=game4.css.map */
