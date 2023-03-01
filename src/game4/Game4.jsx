@@ -376,6 +376,8 @@ const Game4 = ({ nextLesson }) => {
 
     setFeedbackText(feedback);
 
+    console.log("burbon");
+
     setFeedback(true);
   };
 
@@ -504,6 +506,7 @@ const Game4 = ({ nextLesson }) => {
 
   useEffect(() => {
     if (!isDone) {
+      console.log("okeeeeej done");
       setInfoText(<p>Verbinde die Teile der Satzklammer mit dem Magnet.</p>);
     }
   }, [isDone]);
@@ -605,7 +608,7 @@ const Game4 = ({ nextLesson }) => {
           closeFunc={() => {
             setFeedback(false);
 
-            if (rightSentence === 7) {
+            if (rightSentence === 7 && !isDone) {
               setTimeout(() => {
                 setInfoOverlay(true);
               }, 50);

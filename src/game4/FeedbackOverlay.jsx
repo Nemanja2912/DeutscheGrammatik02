@@ -72,6 +72,7 @@ const FeedbackOverlay = ({ children, closeFunc = () => {} }) => {
   });
 
   useEffect(() => {
+    console.log("ok?");
     setAnimateOverlay(true);
     setCustomBoxStyle((prev) => {
       return { ...prev, transform: "scale(1.2)", opacity: 1 };

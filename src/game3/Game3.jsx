@@ -39,12 +39,10 @@ const Game3 = ({ nextLesson }) => {
               setInfoOverlay(true);
               setStep(2);
             },
-            0
-            // 3000
+            6000
           );
         },
-        0
-        // 6500
+        3000
       );
     }
 
